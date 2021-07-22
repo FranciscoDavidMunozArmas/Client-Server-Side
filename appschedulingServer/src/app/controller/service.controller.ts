@@ -15,3 +15,17 @@ export const getAll = async (req: Request, res: Response) => {
         });
     }
 }
+
+export const post = async (req: Request, res: Response) => {
+    try {
+        const service: Service = req.body;
+        const conn = await connect();
+        await conn.query(`insert into service set ?`, [service]);
+        return res.status(200).json(service);
+    } catch (error: any) {
+        return res.status(500).json({
+            message: "Error",
+            error: error.message
+        });
+    }
+}
