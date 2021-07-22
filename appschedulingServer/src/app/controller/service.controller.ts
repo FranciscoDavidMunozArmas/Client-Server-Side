@@ -88,3 +88,17 @@ export const deleteByID = async (req: Request, res: Response) => {
         });
     }
 }
+
+export const getByName = async (req: Request, res: Response) => {
+    try {
+        const { serviceName } = req.params;
+        const conn = await connect();
+        const service = await conn.query("select * from service where service.servicename=?", [serviceName]);
+        return res.status(200).json(service[0]);
+    } catch (error: any) {
+        return res.status(500).json({
+            message: "Error",
+            error: error.message
+        });
+    }
+}
