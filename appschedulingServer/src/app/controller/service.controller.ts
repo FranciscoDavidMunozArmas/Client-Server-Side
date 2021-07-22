@@ -71,3 +71,20 @@ export const put = async (req: Request, res: Response) => {
         });
     }
 }
+
+export const deleteByID = async (req: Request, res: Response) => {
+    try {
+        const { serviceID } = req.params;
+        const conn = await connect();
+        await conn.query("delete from service where service.servicecode=?", [serviceID]);
+        return res.status(200).json({ 
+            itemID: serviceID ,
+            message: "Item deleted" 
+        });
+    } catch (error: any) {
+        return res.status(500).json({
+            message: "Error",
+            error: error.message
+        });
+    }
+}
