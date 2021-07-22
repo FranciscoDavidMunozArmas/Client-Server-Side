@@ -56,3 +56,18 @@ export const getByID = async (req: Request, res: Response) => {
         });
     }
 }
+
+export const put = async (req: Request, res: Response) => {
+    try {
+        const { serviceID }= req.params
+        const service: Service = req.body;
+        const conn = await connect();
+        await conn.query(`update service set ? where service.servicecode = ?`, [service, serviceID]);
+        return res.status(200).json(service);
+    } catch (error: any) {
+        return res.status(500).json({
+            message: "Error",
+            error: error.message
+        });
+    }
+}
