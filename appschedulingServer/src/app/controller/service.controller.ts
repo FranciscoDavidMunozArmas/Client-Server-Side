@@ -42,3 +42,17 @@ export const deleteAll = async (req: Request, res: Response) => {
         });
     }
 }
+
+export const getByID = async (req: Request, res: Response) => {
+    try {
+        const { serviceID } = req.params;
+        const conn = await connect();
+        const user = await conn.query("select * from service where service.servicecode=?", [serviceID]);
+        return res.status(200).json(user[0]);
+    } catch (error: any) {
+        return res.status(500).json({
+            message: "Error",
+            error: error.message
+        });
+    }
+}
