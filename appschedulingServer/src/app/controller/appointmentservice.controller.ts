@@ -44,3 +44,17 @@ export const deleteAll = async (req: Request, res: Response) => {
         });
     }
 }
+
+export const getByIDs = async (req: Request, res: Response) => {
+    try {
+        const { serviceID, appointmentID }=req.params;
+        const conn = await connect();
+        const appointment = await conn.query("select * from  appointmentservice where appointmentservice.appointmentcode = ? and appointmentservice.servicecode = ?", [appointmentID, serviceID]);
+        return res.status(200).json(appointment[0]);
+    } catch (error: any) {
+        return res.status(500).json({
+            message: "Error",
+            error: error.message
+        });
+    }
+}
