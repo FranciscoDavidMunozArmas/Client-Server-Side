@@ -58,3 +58,18 @@ export const getByIDs = async (req: Request, res: Response) => {
         });
     }
 }
+
+export const put = async (req: Request, res: Response) => {
+    try {
+        const { serviceID, appointmentID }=req.params;
+        const register: AppointmentService=req.body;
+        const conn = await connect();
+        await conn.query('update appointmentservice set ? where appointmentservice.appointmentcode = ? and appointmentservice.servicecode = ?', [register, appointmentID, serviceID]);
+        return res.status(200).json(register);
+    } catch (error: any) {
+        return res.status(500).json({
+            message: "Error",
+            error: error.message
+        });
+    }
+}
