@@ -102,3 +102,20 @@ export const getByName = async (req: Request, res: Response) => {
         });
     }
 }
+
+export const deleteByName = async (req: Request, res: Response) => {
+    try {
+        const { serviceName } = req.params;
+        const conn = await connect();
+        await conn.query("delete from service where service.servicename=?", [serviceName]);
+        return res.status(200).json({ 
+            itemName: serviceName,
+            message: "Item deleted" 
+        });
+    } catch (error: any) {
+        return res.status(500).json({
+            message: "Error",
+            error: error.message
+        });
+    }
+}
