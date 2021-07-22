@@ -31,3 +31,16 @@ export const post = async (req: Request, res: Response) => {
         });
     }
 }
+
+export const deleteAll = async (req: Request, res: Response) => {
+    try {
+        const conn = await connect();
+        await conn.query("delete from appointmentservice");
+        return res.status(200).json({ message: "Items deleted" });
+    } catch (error: any) {
+        return res.status(500).json({
+            message: "Error",
+            error: error.message
+        });
+    }
+}
