@@ -14,6 +14,8 @@ export class CalendarcontainerComponent implements OnInit {
   ngOnInit(): void {
 
     this.appointments.push(new Date(2021, 8, 4));
+    this.appointments.push(new Date(2021, 8, 1));
+    this.appointments.push(new Date(2021, 8, 4));
     this.appointments.push(new Date(2021, 8, 20));
     this.appointments.push(new Date(2021, 1, 4));
     this.appointments.push(new Date(2021, 6, 4));
