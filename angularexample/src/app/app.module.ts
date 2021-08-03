@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { CalendarcontainerComponent } from './components/calendarcontainer/calendarcontainer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CalendarComponent
+    CalendarComponent,
+    CalendarcontainerComponent
   ],
   imports: [
     BrowserModule,
