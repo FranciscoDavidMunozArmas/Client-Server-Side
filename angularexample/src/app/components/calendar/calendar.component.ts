@@ -1,5 +1,5 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import * as moment from "moment";
 import { Day } from '../../interfaces/Day';
 
@@ -10,7 +10,8 @@ import { Day } from '../../interfaces/Day';
 })
 export class CalendarComponent implements OnInit {
 
-  @Input() example?: String;
+  @Input() appointments?: Date[];
+  @Output() exampleOutput = new EventEmitter<string>();
 
   week: any = [
     "Monday",
@@ -24,17 +25,18 @@ export class CalendarComponent implements OnInit {
 
   monthSelect: any = [];
   dateSelect: any = [];
+  todayDate: number = 0;
 
   constructor() {}
 
   ngOnInit(){
     let date = new Date();
+    this.todayDate = date.getUTCDate();
     this.getDaysFromDate(date.getUTCMonth() + 1, date.getUTCFullYear());
   }
 
   getDaysFromDate(month: number, year: number){
     const startDay = moment(`${year}/${month}/01`);
-    console.log(`${year}/${month}/1`);
     const endDay = startDay.clone().endOf('month');
 
     this.dateSelect = startDay;
@@ -50,10 +52,21 @@ export class CalendarComponent implements OnInit {
         value: element,
         indexWeek: dayObject.isoWeekday()
       }
-      console.log(day);
+      if(this.checkAppointment(element, month, year)){
+        day.appointment = true;
+      }
+
       return day;
     });
     this.monthSelect = arrayOfDays;
+  }
+
+  checkAppointment(day: number, month:number, year:number):boolean{
+    if(this.appointments){
+      let actualAppointments = this.appointments.filter((element:Date) => element.getUTCDate() === day && element.getUTCMonth() === month && element.getUTCFullYear() === year);
+      return (actualAppointments.length !== 0);
+    }
+    return false;
   }
 
   changeMonth(flag: number){
@@ -65,7 +78,7 @@ export class CalendarComponent implements OnInit {
       this.getDaysFromDate(nextDate.format('MM'), nextDate.format('YYYY'));
     } else {
       let date = new Date();
-      this.getDaysFromDate(date.getMonth() + 2, date.getFullYear());
+      this.getDaysFromDate(date.getMonth() + 1, date.getFullYear());
     }
   }
 
@@ -73,6 +86,7 @@ export class CalendarComponent implements OnInit {
     const monthYear = this.dateSelect.format('YYYY-MM');
     const parse = `${monthYear}-${day.value}/01`;
     const objectDate = moment(parse);
+    this.exampleOutput?.emit(parse);
   }
 
 }

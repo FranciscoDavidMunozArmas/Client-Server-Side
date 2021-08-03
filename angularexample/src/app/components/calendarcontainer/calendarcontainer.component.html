@@ -1,1 +1,3 @@
-<app-calendar example="I'm a example"></app-calendar>
+<app-calendar [appointments]="appointment" (exampleOutput)="setExample($event)"></app-calendar>
+
+<p>{{example}}</p>
