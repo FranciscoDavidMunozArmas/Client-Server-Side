@@ -1,9 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RegisterUserComponent } from './register-user/register-user.component';
+import { AppmainComponent } from "./components/appmain/appmain.component";
 
 const routes: Routes = [
-  {path: '', component:RegisterUserComponent}
+  {
+    path: 'calendar',
+    component: AppmainComponent
+  },
+  {
+    path: '',
+    redirectTo: '/calendar',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

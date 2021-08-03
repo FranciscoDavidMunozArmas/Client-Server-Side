@@ -32,7 +32,6 @@ export class CalendarcontainerComponent implements OnInit {
   }
 
   setExample(example: string) {
-    console.log(example);
     this.example = example;
   }
 
