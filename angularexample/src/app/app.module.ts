@@ -9,6 +9,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { CalendarcontainerComponent } from './components/calendarcontainer/calendarcontainer.component';
 import { ExamplemodalComponent } from './components/examplemodal/examplemodal.component';
 import { AppmainComponent } from './components/appmain/appmain.component';
+import { FloatingComponent } from './components/floating/floating.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AppmainComponent } from './components/appmain/appmain.component';
     CalendarComponent,
     CalendarcontainerComponent,
     ExamplemodalComponent,
-    AppmainComponent
+    AppmainComponent,
+    FloatingComponent
   ],
   imports: [
     BrowserModule,

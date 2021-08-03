@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppmainComponent implements OnInit {
 
+  message: string = "";
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  clickAdd(){
+    this.message = "User added";
+  }
+
+  clickSignOut(){
+    this.message = "Signing out";
   }
 
 }
