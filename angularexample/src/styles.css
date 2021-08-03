@@ -116,7 +116,6 @@
 .btn-check:active+.btn-primary:focus,
 .btn-check:checked+.btn-primary:focus,
 .btn-primary.active:focus,
-.btn-primary:active:focus,
 .show>.btn-primary.dropdown-toggle:focus {
     box-shadow: none;
 }
@@ -124,6 +123,8 @@
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary:hover,
+.btn-primary:focus>span,
+.btn-primary:active>span,
 .btn-primary:hover>span {
     color: var(--primary-color);
     border-color: var(--primary-color);
