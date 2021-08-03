@@ -27,30 +27,42 @@
     margin: 0.25rem;
 }
 
-.day-container {
-    height: 6.75rem;
+.day,
+.today {
+    height: auto;
     display: block;
     position: relative;
-    transition: all .1s ease;
-    border: 0.1rem solid var(--primary-color);
-    color: var(--primary-color);
-    border-radius: 0.25rem;
+    transition: all .3s ease;
+    display: flex;
+    justify-content: center;
 }
 
-.day-container:hover {
+.today {
+    background-color: rgb(156 156 156);
+    border-radius: 100%;
+    color: var(--primary-text-color);
+}
+
+.day-container:hover>.today,
+.day-container:hover>.day {
+    opacity: 100%;
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+.day-container:hover>.day {
     background-color: var(--primary-color);
     color: var(--primary-text-color);
-    opacity: 50%;
-    border-radius: 0.5rem;
-    cursor: pointer;
 }
 
-.day-container span {
-    position: absolute;
-    margin-top: 0;
-    left: 0px;
-    font-size: 0.75rem;
-    margin: 0.15rem;
+.day-container:hover>.today {
+    background-color: rgb(75, 75, 75);
+}
+
+.day-container .day span,
+.day-container .today span {
+    font-size: 1.5rem;
+    margin: 25% 0;
 }
 
 .month-indicator {

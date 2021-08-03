@@ -1,11 +1,11 @@
-:root{
+:root {
     --primary-color: rgb(0, 120, 233);
-    --prmary-white: rgb(255,255,255);
+    --prmary-white: rgb(255, 255, 255);
     --primary-text-color: rgb(231, 246, 253);
     --simple-margin: 0.5rem;
 }
 
-*{
+* {
     padding: 0;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -38,17 +38,17 @@
     filter: drop-shadow(45%);
 }
 
-.wrapper{
+.wrapper {
     height: 100vh;
     width: 100%;
 }
 
-.bg-gradient-primary{
+.bg-gradient-primary {
     background: var(--primary-color);
     background: linear-gradient(45deg, var(--primary-color) 35%, var(--prmary-white) 100%);
 }
 
-.card{
+.card {
     box-shadow: 0px 0px 0.25rem #000;
 }
 
@@ -56,12 +56,12 @@
     max-width: 500px;
 }
 
-.container{
+.container {
     padding-top: var(--simple-margin);
     padding-bottom: var(--simple-margin);
 }
 
-.form-group{
+.form-group {
     margin-top: var(--simple-margin);
     margin-bottom: var(--simple-margin);
 }
@@ -73,7 +73,7 @@
 .form-group input[type="date"],
 .form-group input[type="datetime"],
 .form-group input[type="password"],
-.form-group input[type="datetime-local"]{
+.form-group input[type="datetime-local"] {
     border: 1px solid transparent;
     border-radius: 0%;
 }
@@ -87,72 +87,76 @@
 .form-group input[type="datetime-local"],
 .form-group input[type="password"],
 .form-group textarea,
-.form-group select{
+.form-group select {
     transition: all .3s ease;
 }
 
 .form-group textarea:focus,
-.form-group select:focus{
+.form-group select:focus {
     border-radius: 0.25rem;
     border: 1px solid var(--primary-color);
 }
 
 .form-group textarea:focus,
 .form-group select:focus,
-.form-group input:focus{
+.form-group input:focus {
     box-shadow: none;
     border-bottom: 1px solid var(--primary-color);
 }
 
-.btn{
+.btn {
     transition: all .3s ease;
 }
 
-.btn-check:active+.btn-primary:focus, .btn-check:checked+.btn-primary:focus, .btn-primary.active:focus, .btn-primary:active:focus, .show>.btn-primary.dropdown-toggle:focus {
+.btn-check:active+.btn-primary:focus,
+.btn-check:checked+.btn-primary:focus,
+.btn-primary.active:focus,
+.btn-primary:active:focus,
+.show>.btn-primary.dropdown-toggle:focus {
     box-shadow: none;
 }
 
 .btn-primary:focus,
 .btn-primary:active,
-.btn-primary:hover{
+.btn-primary:hover {
     color: var(--primary-color);
     border-color: var(--primary-color);
     background-color: var(--prmary-white);
 }
 
-.btn-primary{
+.btn-primary {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
 }
 
-.btn-block{
+.btn-block {
     width: 100%;
 }
 
-.btn-float{
+.btn-float {
     margin: 10px;
     border-radius: 100%;
     box-shadow: 0px 0px 0.1rem #000;
     transition: all .3s ease;
 }
 
-.btn-float:hover{
+.btn-float:hover {
     border-radius: 100%;
     box-shadow: 0px 0px 0.25rem #000;
 }
 
-.float-right-bottom{
+.float-right-bottom {
     position: fixed;
     right: 0;
     bottom: 0;
 }
 
-.routerLink{
+.routerLink {
     text-decoration: none;
     color: var(--primary-color);
     transition: .3s all ease;
 }
 
-.routerLink:hover{
+.routerLink:hover {
     filter: brightness(80%);
 }

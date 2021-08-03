@@ -1,6 +1,7 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as moment from "moment";
+import { Day } from '../../interfaces/Day';
 
 @Component({
   selector: 'app-calendar',
@@ -8,6 +9,8 @@ import * as moment from "moment";
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
+
+  @Input() example?: String;
 
   week: any = [
     "Monday",
@@ -26,11 +29,12 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit(){
     let date = new Date();
-    this.getDaysFromDate(date.getMonth() + 2, date.getFullYear());
+    this.getDaysFromDate(date.getUTCMonth() + 1, date.getUTCFullYear());
   }
 
   getDaysFromDate(month: number, year: number){
-    const startDay = moment.utc(`${year}/${month}/01`);
+    const startDay = moment(`${year}/${month}/01`);
+    console.log(`${year}/${month}/1`);
     const endDay = startDay.clone().endOf('month');
 
     this.dateSelect = startDay;
@@ -41,11 +45,13 @@ export class CalendarComponent implements OnInit {
     const arrayOfDays = Object.keys([... Array(numberOfDays)]).map((element: any) => {
       element = parseInt(element) + 1;
       const dayObject = moment(`${year}-${month}-${element}`);
-      return {
+      const day:Day = {
         name: dayObject.format('dddd'),
         value: element,
         indexWeek: dayObject.isoWeekday()
       }
+      console.log(day);
+      return day;
     });
     this.monthSelect = arrayOfDays;
   }
