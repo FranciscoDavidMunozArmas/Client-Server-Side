@@ -1,0 +1,58 @@
+* {
+    outline: none !important
+}
+
+.calendar {
+    margin: 1rem;
+}
+
+.day-of-week,
+.date-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin: 0.25rem;
+}
+
+.day-of-week {
+    border-radius: 0.5rem;
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+    text-align: center;
+}
+
+.day-of-week h3,
+.day-of-week h4,
+.day-of-week h5,
+.day-of-week h6 {
+    margin: 0.25rem;
+}
+
+.day-container {
+    height: 6.75rem;
+    display: block;
+    position: relative;
+    transition: all .1s ease;
+    border: 0.1rem solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 0.25rem;
+}
+
+.day-container:hover {
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+    opacity: 50%;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.day-container span {
+    position: absolute;
+    margin-top: 0;
+    left: 0px;
+    font-size: 0.75rem;
+    margin: 0.15rem;
+}
+
+.month-indicator {
+    text-align: center;
+}
