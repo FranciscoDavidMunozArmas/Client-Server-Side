@@ -24,17 +24,18 @@ export class CalendarComponent implements OnInit {
 
   monthSelect: any = [];
   dateSelect: any = [];
+  todayDate: number = 0;
 
   constructor() {}
 
   ngOnInit(){
     let date = new Date();
+    this.todayDate = date.getUTCDate();
     this.getDaysFromDate(date.getUTCMonth() + 1, date.getUTCFullYear());
   }
 
   getDaysFromDate(month: number, year: number){
     const startDay = moment(`${year}/${month}/01`);
-    console.log(`${year}/${month}/1`);
     const endDay = startDay.clone().endOf('month');
 
     this.dateSelect = startDay;
@@ -50,7 +51,6 @@ export class CalendarComponent implements OnInit {
         value: element,
         indexWeek: dayObject.isoWeekday()
       }
-      console.log(day);
       return day;
     });
     this.monthSelect = arrayOfDays;
