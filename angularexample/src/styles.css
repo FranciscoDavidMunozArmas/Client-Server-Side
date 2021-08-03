@@ -1,14 +1,15 @@
 :root {
     --primary-color: rgb(0, 120, 233);
-    --prmary-white: rgb(255, 255, 255);
-    --primary-text-color: rgb(231, 246, 253);
+    --primary-white: rgb(255, 255, 255);
     --simple-margin: 0.5rem;
+    --text-base-color: rgb(37, 37, 37);
 }
 
 * {
     padding: 0;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--text-base-color);
 }
 
 ::-webkit-scrollbar {
@@ -108,6 +109,10 @@
     transition: all .3s ease;
 }
 
+.btn span {
+    color: var(--primary-white)
+}
+
 .btn-check:active+.btn-primary:focus,
 .btn-check:checked+.btn-primary:focus,
 .btn-primary.active:focus,
@@ -118,7 +123,8 @@
 
 .btn-primary:focus,
 .btn-primary:active,
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:hover>span {
     color: var(--primary-color);
     border-color: var(--primary-color);
     background-color: var(--prmary-white);

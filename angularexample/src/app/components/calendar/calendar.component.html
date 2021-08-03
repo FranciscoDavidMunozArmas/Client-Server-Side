@@ -21,6 +21,7 @@
         <div class="day-container" [style.gridColumnStart]="first ? day?.indexWeek : 'auto'" *ngFor="let day of monthSelect; let first = first" (click)="clickDay(day)">
             <div [class]="day?.value == todayDate ? 'today': 'day'">
                 <span>{{day?.value}}</span>
+                <span *ngIf="day?.appointment" class="dot"></span>
             </div>
         </div>
     </div>

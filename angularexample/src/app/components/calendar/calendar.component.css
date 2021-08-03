@@ -25,12 +25,13 @@
 .day-of-week h5,
 .day-of-week h6 {
     margin: 0.25rem;
+    color: var(--primary-white);
 }
 
 .day,
 .today {
+    width: 100%;
     height: auto;
-    display: block;
     position: relative;
     transition: all .3s ease;
     display: flex;
@@ -38,9 +39,16 @@
 }
 
 .today {
-    background-color: rgb(156 156 156);
+    background-color: rgba(66, 66, 66, 0.5);
     border-radius: 100%;
     color: var(--primary-text-color);
+}
+
+.day-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
 }
 
 .day-container:hover>.today,
@@ -52,19 +60,55 @@
 
 .day-container:hover>.day {
     background-color: var(--primary-color);
-    color: var(--primary-text-color);
+    color: var(--primary-white);
+}
+
+.day-container:hover>.day .dot {
+    background-color: var(--primary-white);
 }
 
 .day-container:hover>.today {
     background-color: rgb(75, 75, 75);
+    color: var(--primary-white);
 }
 
-.day-container .day span,
-.day-container .today span {
+.day-container:hover>.day span,
+.day-container:hover>.today span {
+    color: var(--primary-white);
+}
+
+.day-container:hover>.dot span {
+    background-color: var(--primary-white);
+}
+
+.day span,
+.today span {
     font-size: 1.5rem;
-    margin: 25% 0;
+    margin: 25% 25%;
+}
+
+.day span {
+    color: var(--text-base-color);
+}
+
+.today span {
+    color: var(--primary-white);
 }
 
 .month-indicator {
     text-align: center;
+}
+
+.today .dot {
+    background-color: var(--primary-white);
+}
+
+.dot {
+    height: 5px;
+    width: 5px;
+    background-color: var(--text-base-color);
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    bottom: 0px;
 }

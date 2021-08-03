@@ -10,7 +10,7 @@ import { Day } from '../../interfaces/Day';
 })
 export class CalendarComponent implements OnInit {
 
-  @Input() example?: String;
+  @Input() appointments?: Date[];
 
   week: any = [
     "Monday",
@@ -51,9 +51,21 @@ export class CalendarComponent implements OnInit {
         value: element,
         indexWeek: dayObject.isoWeekday()
       }
+      if(this.checkAppointment(element, month, year)){
+        day.appointment = true;
+      }
+
       return day;
     });
     this.monthSelect = arrayOfDays;
+  }
+
+  checkAppointment(day: number, month:number, year:number):boolean{
+    if(this.appointments){
+      let actualAppointments = this.appointments.filter((element:Date) => element.getUTCDate() === day && element.getUTCMonth() === month && element.getUTCFullYear() === year);
+      return (actualAppointments.length !== 0);
+    }
+    return false;
   }
 
   changeMonth(flag: number){
