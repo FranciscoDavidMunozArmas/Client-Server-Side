@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-userinfo',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserinfoComponent implements OnInit {
 
+  @Output() closeEvent = new EventEmitter<any>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  closeInfo(){
+    this.closeEvent?.emit();
   }
 
 }

@@ -4,25 +4,15 @@
             <div class="col-xl-9">
                 <app-calendarcontainer></app-calendarcontainer>
             </div>
-            <div class="col-sm">
+            <div class="col-sm fadeIn first">
                 <div class="container">
                     <h4>5:00</h4>
                 </div>
-
+                <app-buttons-appointment></app-buttons-appointment>
+                <app-buttons-appointment></app-buttons-appointment>
                 <app-buttons-appointment></app-buttons-appointment>
             </div>
         </div>
-    </div>
-    <div class="float-right-bottom">
-        <div class="d-flex flex-column-reverse">
-            <app-floating [icon]="'fa fa-plus'" (eventFunction)="clickAdd()"></app-floating>
-            <app-floating [icon]="'fa fa-sign-out-alt'" (eventFunction)="clickSignOut()"></app-floating>
-            <app-floating [icon]="'fa fa-user'" (eventFunction)="clickUser()"></app-floating>
-        </div>
-    </div>
-
-    <div>
-        {{message}}
     </div>
 
     <ng-template #createModal let-modal>
@@ -35,7 +25,7 @@
     </ng-template>
 
     <ng-template #userModal let-modal>
-        <app-userinfo></app-userinfo>
+        <app-userinfo (closeEvent)="modalClose"></app-userinfo>
     </ng-template>
 
     <ng-template #exampleModal let-modal>
@@ -46,4 +36,12 @@
             </div>
         </div>
     </ng-template>
+</div>
+
+<div class="float-right-bottom fadeIn first">
+    <div class="d-flex flex-column-reverse">
+        <app-floating [icon]="'fa fa-plus'" (eventFunction)="clickAdd()"></app-floating>
+        <app-floating [icon]="'fa fa-sign-out-alt'" (eventFunction)="clickSignOut()"></app-floating>
+        <app-floating [icon]="'fa fa-user'" (eventFunction)="clickUser()"></app-floating>
+    </div>
 </div>
