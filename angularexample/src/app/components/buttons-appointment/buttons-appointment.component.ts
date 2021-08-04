@@ -18,7 +18,7 @@ export class ButtonsAppointmentComponent implements OnInit {
   }
 
   modalClose(){
-    this.modalService.dismissAll();
+    
   }
 
 }
