@@ -15,6 +15,7 @@ import { UserinfoComponent } from './components/userinfo/userinfo.component';
 import { DeleteAppointmentComponent } from './components/delete-appointment/delete-appointment.component';
 
 import { NgbModule}from '@ng-bootstrap/ng-bootstrap';
+import { ButtonsAppointmentComponent } from './components/buttons-appointment/buttons-appointment.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NgbModule}from '@ng-bootstrap/ng-bootstrap';
     FloatingComponent,
     AppointmentComponent,
     UserinfoComponent,
-    DeleteAppointmentComponent
+    DeleteAppointmentComponent,
+    ButtonsAppointmentComponent
   ],
   imports: [
     BrowserModule,
