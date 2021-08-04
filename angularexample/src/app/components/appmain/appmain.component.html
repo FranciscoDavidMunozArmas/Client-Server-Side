@@ -10,12 +10,6 @@
                 </div>
 
                 <app-buttons-appointment></app-buttons-appointment>
-                <app-buttons-appointment></app-buttons-appointment>
-                <app-buttons-appointment></app-buttons-appointment>
-                <app-buttons-appointment></app-buttons-appointment>
-                <app-buttons-appointment></app-buttons-appointment>
-                <app-buttons-appointment></app-buttons-appointment>
-                <app-buttons-appointment></app-buttons-appointment>
             </div>
         </div>
     </div>
@@ -41,12 +35,7 @@
     </ng-template>
 
     <ng-template #userModal let-modal>
-        <div class="card">
-            <a class="btn close-btn" (click)="modalClose()"><span class="fa fa-times"></span></a>
-            <div class="card-body">
-                <app-userinfo></app-userinfo>
-            </div>
-        </div>
+        <app-userinfo></app-userinfo>
     </ng-template>
 
     <ng-template #exampleModal let-modal>
