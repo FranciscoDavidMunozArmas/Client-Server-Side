@@ -167,3 +167,19 @@
 .routerLink:hover {
     filter: brightness(80%);
 }
+
+.close-btn {
+    border: none;
+    position: absolute;
+    margin: 0;
+    transition: all .3 ease;
+}
+
+.close-btn span {
+    color: var(--text-base-color);
+    transition: all .3 ease;
+}
+
+.close-btn:hover>span {
+    color: var(--primary-color);
+}

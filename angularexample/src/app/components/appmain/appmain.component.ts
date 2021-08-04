@@ -14,7 +14,7 @@ export class AppmainComponent implements OnInit {
   @ViewChild("userModal") userModal: ElementRef;
   @ViewChild("exampleModal") exampleModal: ElementRef;
 
-  constructor(private modalService: NgbModal, private elementRef: ElementRef) { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }
@@ -32,20 +32,11 @@ export class AppmainComponent implements OnInit {
   }
 
   triggerModal(content:any){
-    this.modalService.open(content).result.then((res) => {
-      this.closeModal = `Closed with: ${res}`;
-    }, (res) => {
-      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
-    });
+    this.modalService.open(content).result;
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
+  modalClose(){
+    this.modalService.dismissAll();
   }
+
 }

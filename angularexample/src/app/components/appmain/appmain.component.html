@@ -23,6 +23,7 @@
 
     <ng-template #createModal let-modal>
         <div class="card">
+            <a class="btn close-btn" (click)="modal.close()"><span class="fa fa-times"></span></a>
             <div class="card-body">
                 Here goes the addition form
             </div>
@@ -31,6 +32,7 @@
 
     <ng-template #userModal let-modal>
         <div class="card">
+            <a class="btn close-btn" (click)="modalClose()"><span class="fa fa-times"></span></a>
             <div class="card-body">
                 <app-userinfo></app-userinfo>
             </div>
@@ -39,8 +41,9 @@
 
     <ng-template #exampleModal let-modal>
         <div class="card">
+            <a class="btn close-btn" (click)="modal.close()"><span class="fa fa-times"></span></a>
             <div class="card-body">
-                Here goes the addition form
+                I'm signing out
             </div>
         </div>
     </ng-template>
