@@ -13,7 +13,14 @@ import { FloatingComponent } from './components/floating/floating.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
 
 import { NgbModule}from '@ng-bootstrap/ng-bootstrap';
+<<<<<<< HEAD
 import { UserinfoComponent } from './components/userinfo/userinfo.component';
+=======
+import { LoginComponent } from './components/login/login.component';
+import { DeleteAppointmentComponent } from './components/delete-appointment/delete-appointment.component';
+import { ButtonsAppointmentComponent } from './components/buttons-appointment/buttons-appointment.component';
+
+>>>>>>> 7bc541c34e02628824c697236fd0b57932eb4e58
 
 @NgModule({
   declarations: [
@@ -24,7 +31,13 @@ import { UserinfoComponent } from './components/userinfo/userinfo.component';
     AppmainComponent,
     FloatingComponent,
     AppointmentComponent,
+<<<<<<< HEAD
     UserinfoComponent
+=======
+    LoginComponent,
+    DeleteAppointmentComponent,
+    ButtonsAppointmentComponent,
+>>>>>>> 7bc541c34e02628824c697236fd0b57932eb4e58
   ],
   imports: [
     BrowserModule,
