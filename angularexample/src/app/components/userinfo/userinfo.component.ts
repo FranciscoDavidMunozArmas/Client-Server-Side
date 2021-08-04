@@ -7,7 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class UserinfoComponent implements OnInit {
 
-  @Output() closeEvent = new EventEmitter<any>();
+  @Output() closeEvent = new EventEmitter<string>();
 
   constructor() { }
 
