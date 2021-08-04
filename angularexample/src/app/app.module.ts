@@ -11,9 +11,10 @@ import { ExamplemodalComponent } from './components/examplemodal/examplemodal.co
 import { AppmainComponent } from './components/appmain/appmain.component';
 import { FloatingComponent } from './components/floating/floating.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
+
 import { NgbModule}from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './components/login/login.component';
-import { DeletAppointmentComponent } from './components/delet-appointment/delet-appointment.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +26,6 @@ import { DeletAppointmentComponent } from './components/delet-appointment/delet-
     FloatingComponent,
     AppointmentComponent,
     LoginComponent,
-    DeletAppointmentComponent
   ],
   imports: [
     BrowserModule,

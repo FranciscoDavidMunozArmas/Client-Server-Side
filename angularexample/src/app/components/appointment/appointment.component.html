@@ -1,24 +1,56 @@
-<form>
+<form method="GET" action="#">
     <fieldset>
-        <legend>Disabled fieldset example</legend>
+        <legend>Informacion nueva cita</legend>
         <div class="mb-3">
-            <label for="hola" class="form-label">Disabled input</label>
-            <input type="text" id="hola" class="form-control" placeholder="Disabled input">
+            <label for="disabledSelect" class="form-label">Servicio</label>
+            <select id="disabledSelect" class="form-select">
+             <option>Corte Cabello</option>
+             <option>Manicure</option>
+             <option>Pedicure</option>
+            </select>
         </div>
         <div class="mb-3">
-            <label for="disabledSelect" class="form-label">Disabled select menu</label>
-            <select id="disabledSelect" class="form-select">
-          <option>Disabled select</option>
+            <label for="disabledSelectEmployeeName" class="form-label">Nombre empleado</label>
+            <select id="disabledSelectEmployeeName" class="form-select">
+          <option>Juan</option>
+          <option>Pepe</option>
+          <option>Bryan</option>
         </select>
         </div>
         <div class="mb-3">
+            <label for="dateAppointment" class="form-label">Fecha</label>
+            <input type="datetime-local" id="dateAppointment" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Notificar: </label>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" disabled>
-                <label class="form-check-label" for="disabledFieldsetCheck">
-            Can't check this
-          </label>
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Un dia antes
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Una semana antes
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
+                <label class="form-check-label" for="flexRadioDefault3">
+                  Una hora antes
+                </label>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="container">
+            <div class="row">
+                <div class="col-md bd-gradient-primary">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+                <div class="col-md bd-gradient-primary">
+                    <button type="submit" class="btn btn-primary">Cancelar</button>
+                </div>
+            </div>
+        </div>
     </fieldset>
 </form>
