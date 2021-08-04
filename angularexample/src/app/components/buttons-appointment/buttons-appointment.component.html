@@ -6,10 +6,18 @@
             </div>
             <div class="col-md-4">
                 <div class="btn-group">
-                    <button class="btn btn-light btn-sm"><span class="fa fa-edit"></span></button>
-                    <button class="btn btn-light btn-sm"> <span class="fa fa-trash"></span></button>
+                    <button class="btn btn-light btn-sm" (click)="triggerModal(editModal)"><span class="fa fa-edit"></span></button>
+                    <button class="btn btn-light btn-sm" (click)="triggerModal(deleteModal)"> <span class="fa fa-trash"></span></button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<ng-template #deleteModal let-modal>
+    Delete
+</ng-template>
+
+<ng-template #editModal let-modal>
+    Edit
+</ng-template>

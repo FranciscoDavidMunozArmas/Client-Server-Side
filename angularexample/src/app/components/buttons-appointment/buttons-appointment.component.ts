@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-buttons-appointment',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ButtonsAppointmentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
+  }
+
+  triggerModal(content:any){
+    this.modalService.open(content).result;
+  }
+
+  modalClose(){
+    this.modalService.dismissAll();
   }
 
 }

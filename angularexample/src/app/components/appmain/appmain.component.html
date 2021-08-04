@@ -15,7 +15,9 @@
 
     <ng-template #createModal let-modal>
         <div class="card">
-            <a class="btn close-btn" (click)="modal.close()"><span class="fa fa-times"></span></a>
+            <div class="d-flex mb-3">
+                <a class="btn close-btn" (click)="modalClose()"><span class="fa fa-times"></span></a>
+            </div>
             <div class="card-body">
                 <app-appointment></app-appointment>
             </div>
