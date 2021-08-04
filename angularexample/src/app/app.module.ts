@@ -10,6 +10,9 @@ import { CalendarcontainerComponent } from './components/calendarcontainer/calen
 import { ExamplemodalComponent } from './components/examplemodal/examplemodal.component';
 import { AppmainComponent } from './components/appmain/appmain.component';
 import { FloatingComponent } from './components/floating/floating.component';
+import { AppointmentComponent } from './components/appointment/appointment.component';
+
+import { NgbModule}from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,12 +21,14 @@ import { FloatingComponent } from './components/floating/floating.component';
     CalendarcontainerComponent,
     ExamplemodalComponent,
     AppmainComponent,
-    FloatingComponent
+    FloatingComponent,
+    AppointmentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
