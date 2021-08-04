@@ -14,7 +14,7 @@ export class ButtonsAppointmentComponent implements OnInit {
   }
 
   triggerModal(content:any){
-    this.modalService.open(content).result;
+    
   }
 
   modalClose(){
