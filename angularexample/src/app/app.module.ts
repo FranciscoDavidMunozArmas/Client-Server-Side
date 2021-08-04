@@ -13,6 +13,7 @@ import { FloatingComponent } from './components/floating/floating.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
 
 import { NgbModule}from '@ng-bootstrap/ng-bootstrap';
+import { UserinfoComponent } from './components/userinfo/userinfo.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NgbModule}from '@ng-bootstrap/ng-bootstrap';
     ExamplemodalComponent,
     AppmainComponent,
     FloatingComponent,
-    AppointmentComponent
+    AppointmentComponent,
+    UserinfoComponent
   ],
   imports: [
     BrowserModule,
