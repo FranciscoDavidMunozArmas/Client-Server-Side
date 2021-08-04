@@ -11,8 +11,8 @@ import { ExamplemodalComponent } from './components/examplemodal/examplemodal.co
 import { AppmainComponent } from './components/appmain/appmain.component';
 import { FloatingComponent } from './components/floating/floating.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
-
 import { NgbModule}from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,8 @@ import { NgbModule}from '@ng-bootstrap/ng-bootstrap';
     ExamplemodalComponent,
     AppmainComponent,
     FloatingComponent,
-    AppointmentComponent
+    AppointmentComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
