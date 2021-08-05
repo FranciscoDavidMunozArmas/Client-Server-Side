@@ -8,8 +8,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ServiceemployeeService extends Service{
 
-  constructor(private http: HttpClient) {
+  constructor(private httpClient: HttpClient) {
     super();
     super.extendsURI("/serviceemployee");
    }
+
+   getAll(){
+    return this.httpClient.get(super.getURI());
+  }
+
+
+
 }
+
