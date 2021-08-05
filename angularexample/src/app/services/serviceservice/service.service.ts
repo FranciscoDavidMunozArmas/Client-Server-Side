@@ -27,6 +27,10 @@ export class ServiceService extends Service {
    deleteById(id:string){
      return this.httpClient.delete(super.getURI()+"/"+id);
    }
+   putService(id:string, service:Service){
+     return this.httpClient.put(super.getURI()+"/"+id, service);
+   }
+   
 
 
 
