@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/userservice/user.service';
+import { User } from 'src/app/interfaces/User';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-signup',
@@ -7,9 +11,48 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  user: any = {
+    usercode: "",
+    username: "",
+    userpassword: ""
+  }
+
+  message: string = "";
+  private cookieName:string = "logged-user";
+
+  constructor(private userService: UserService, private router: Router, private cookie: CookieService) { }
 
   ngOnInit(): void {
+    const cookieValue = this.cookie.get(this.cookieName);
+    if(cookieValue){
+      // this.router.navigate(['/calendar']);
+    }
+  }
+
+  onChange(e: any){
+    this.user = {... this.user, [e.target.name]:e.target.value};
+  }
+
+  signUp(e:any){
+    e.preventDefault();
+    this.message = "";
+    const user: User = this.user;
+    this.userService.postUser(user)
+    .subscribe(res => {
+      const user:User = res;
+      if(!user){
+        this.message = "User not found";
+      } else {
+        this.letUserIn(user.USERCODE);
+      }
+    });
+  }
+
+  letUserIn(id:string){
+    let date = new Date();
+    date.setHours(date.getHours() + 2);
+    this.cookie.set(this.cookieName, id, date);
+    this.router.navigate(['/calendar']);
   }
 
 }

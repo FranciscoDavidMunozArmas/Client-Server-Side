@@ -106,6 +106,7 @@ export const getByName = async (req: Request, res: Response) => {
 export const postByNamePassword = async (req: Request, res: Response) => {
     try {
         const { username, userpassword } = req.body;
+        console.log(username);
         const conn = await connect();
         const user = await conn.query("select * from user where user.username=? and user.userpassword=?", [username, userpassword]);
         return res.status(200).json(user[0]);

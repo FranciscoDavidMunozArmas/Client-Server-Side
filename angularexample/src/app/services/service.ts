@@ -1,5 +1,5 @@
 export class Service {
-    private URI: string = "http://localhost:3000/";
+    private URI: string = "http://localhost:3000";
 
     constructor(){}
 
@@ -8,6 +8,6 @@ export class Service {
     }
 
     extendsURI(extended: string) {
-        this.URI = `${this.URI}/${extended}`
+        this.URI = `${this.URI}${extended}`
     }
 }

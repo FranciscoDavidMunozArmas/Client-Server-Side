@@ -12,7 +12,7 @@ export class UserService extends Service{
 
   constructor(private httpClient: HttpClient) {
     super();
-    super.extendsURI("user");
+    super.extendsURI("/user");
   }
 
   getAll(){
@@ -24,11 +24,11 @@ export class UserService extends Service{
   }
 
   postUser(user: User){
-    return this.httpClient.post(super.getURI(), user);
+    return this.httpClient.post<User>(super.getURI(), user);
   }
 
   postByNamePassword(name: string, password:string){
-    return this.httpClient.post(`${super.getURI()}/user`, {username: name, userpassword: password});
+    return this.httpClient.post<User[]>(`${super.getURI()}/user`, {username: name, userpassword: password});
   }
 
   putUser(id:string, user: User){

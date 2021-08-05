@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
+import { CookieService } from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,8 +20,6 @@ import { DeleteAppointmentComponent } from './components/delete-appointment/dele
 import { ButtonsAppointmentComponent } from './components/buttons-appointment/buttons-appointment.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ClockComponent } from './components/clock/clock.component';
-
-import { NgbModule}from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -37,12 +38,13 @@ import { NgbModule}from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
     NgbModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
