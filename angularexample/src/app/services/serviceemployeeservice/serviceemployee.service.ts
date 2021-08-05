@@ -42,8 +42,15 @@ export class ServiceemployeeService extends Service{
     return this.httpClient.delete(`${super.getURI()}/${id}`);
   }
 
+  getByEmployeeId(id:string){
+    return this.httpClient.get(`${super.getURI()}/${id}`);
+  }
 
-  
+  deleteByEmployeeId(id:string){
+    return this.httpClient.delete(`${super.getURI()}/${id}`);
+  }
+
+
  /* putServiceEmployee(id:string, serviceemployee: ServiceEmployee){
     return this.httpClient.put(`${super.getURI()}/${id}`, serviceemployee);
   }*/
