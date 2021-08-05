@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Service } from '../service';
 import { HttpClient } from '@angular/common/http';
 
+import { ServiceEmployee } from '../';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,14 @@ export class ServiceemployeeService extends Service{
   getById(id:string){
     return this.httpClient.get(`${super.getURI()}/${id}`);
   }
+
+  deleteById(id:string){
+    return this.httpClient.delete(`${super.getURI()}/${id}`);
+  }
+  
+ /* putServiceEmployee(id:string, serviceemployee: ServiceEmployee){
+    return this.httpClient.put(`${super.getURI()}/${id}`, serviceemployee);
+  }*/
 
 
 }
