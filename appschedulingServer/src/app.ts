@@ -5,7 +5,6 @@ import cors from 'cors';
 import config from './config/config';
 
 import userRouter from './app/routes/user.routes';
-import useragenda from './app/routes/useragenda.routes'
 import employeeRouter from './app/routes/employee.routes';
 import agendaRouter from './app/routes/agenda.routes';
 import appointmentRouter from './app/routes/appointment.routes';
@@ -27,7 +26,6 @@ app.use(express.json());
 //routes
 app.use("/user", userRouter);
 app.use("/employee", employeeRouter);
-app.use("/useragenda", useragenda);
 app.use("/agenda", agendaRouter);
 app.use("/appointment", appointmentRouter);
 app.use("/appointmentservice", appointmentserviceRouter);
