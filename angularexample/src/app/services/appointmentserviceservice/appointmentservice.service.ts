@@ -25,6 +25,8 @@ export class AppointmentserviceService extends Service{
     return this.httpClient.post<AppointmentService>(super.getURI(), appointmentservice);
   }
 
-
+  getByServiceId(id:string){
+    return this.httpClient.get(`${super.getURI()}/${id}`);
+  }
 
 }
