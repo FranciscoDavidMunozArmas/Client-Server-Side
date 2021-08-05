@@ -18,6 +18,10 @@ export class ServiceService extends Service {
    getById(id:string){
      return this.httpClient.get(super.getURI()+"/"+id);
    }
+   postService(service: Service){
+     return this.httpClient.post(super.getURI(), service);
+   }
    
+
 
 }
