@@ -29,4 +29,10 @@ export class AppointmentserviceService extends Service{
     return this.httpClient.get(`${super.getURI()}/${id}`);
   }
 
+  putAppointment(id:string, appointmentservice: AppointmentService){
+    return this.httpClient.put(`${super.getURI()}/${id}`, appointmentservice);
+  }
+
+  
+
 }
