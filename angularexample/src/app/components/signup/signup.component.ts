@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     const cookieValue = this.cookie.get(this.cookieName);
     if(cookieValue){
-      // this.router.navigate(['/calendar']);
+      this.router.navigate(['/calendar']);
     }
   }
 
@@ -37,13 +37,15 @@ export class SignupComponent implements OnInit {
     e.preventDefault();
     this.message = "";
     const user: User = this.user;
+    console.log(user);
     this.userService.postUser(user)
     .subscribe(res => {
       const user:User = res;
+      console.log(user);
       if(!user){
-        this.message = "User not found";
+        this.message = "User already exists";
       } else {
-        this.letUserIn(user.USERCODE);
+        this.letUserIn(this.user.usercode);
       }
     });
   }

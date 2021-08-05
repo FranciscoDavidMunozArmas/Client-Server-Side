@@ -8,20 +8,20 @@
         </div>
         <div class="card-body">
             <!-- Login Form -->
-            <form class="form-container">
+            <form class="form-container" (submit)="signUp($event)">
                 <div class="form-group">
-                    <input type="text" id="userCode" class="form-control fadeIn first" name="login" placeholder="User code">
+                    <input type="text" id="userCode" class="form-control fadeIn first" (change)="onChange($event)" [value]="user.usercode" name="usercode" placeholder="User code">
                 </div>
                 <div class="form-group">
-                    <input type="text" id="login" class="form-control fadeIn second" name="login" placeholder="User">
+                    <input type="text" id="login" class="form-control fadeIn second" (change)="onChange($event)" [value]="user.username" name="username" placeholder="User name">
                 </div>
                 <div class="form-group">
-                    <input type="text" id="password" class="form-control fadeIn third" name="login" placeholder="Password">
+                    <input type="text" id="password" class="form-control fadeIn third" (change)="onChange($event)" [value]="user.userpassword" name="userpassword" placeholder="Password">
                 </div>
                 <div class="form-group">
-                    <input type="text" id="password" class="form-control fadeIn fourth" name="login" placeholder="Confirm password">
+                    <input type="text" id="password" class="form-control fadeIn fourth" name="confirmpassword" placeholder="Confirm password">
                 </div>
-                <button type="submit" class="btn btn-primary">Log in</button>
+                <button type="submit" class="btn btn-primary">Sign up</button>
             </form>
         </div>
         <div [class]="message === '' ? 'hidden' : 'alert alert-danger'" role="alert">
