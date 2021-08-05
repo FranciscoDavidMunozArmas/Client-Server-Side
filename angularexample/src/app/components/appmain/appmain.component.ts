@@ -1,5 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'app-appmain',
@@ -14,9 +17,15 @@ export class AppmainComponent implements OnInit {
   @ViewChild("userModal") userModal: ElementRef;
   @ViewChild("exampleModal") exampleModal: ElementRef;
 
-  constructor(private modalService: NgbModal) { }
+  private cookieName:string = "logged-user";
+
+  constructor(private modalService: NgbModal, private router: Router, private cookie:CookieService) { }
 
   ngOnInit(): void {
+    const cookieValue = this.cookie.get(this.cookieName);
+    if(!cookieValue){
+      this.router.navigate(['/login']);
+    }
   }
 
   clickAdd(){
@@ -28,7 +37,8 @@ export class AppmainComponent implements OnInit {
   }
 
   clickSignOut(){
-    this.triggerModal(this.exampleModal);
+    this.cookie.delete(this.cookieName);
+    this.router.navigate(['/login']);
   }
 
   triggerModal(content:any){
