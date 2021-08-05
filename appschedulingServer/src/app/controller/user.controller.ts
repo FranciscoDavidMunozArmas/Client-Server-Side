@@ -103,6 +103,21 @@ export const getByName = async (req: Request, res: Response) => {
     }
 }
 
+export const postByNamePassword = async (req: Request, res: Response) => {
+    try {
+        const { username, userpassword } = req.body;
+        const conn = await connect();
+        const user = await conn.query("select * from user where user.username=? and user.userpassword=?", [username, userpassword]);
+        return res.status(200).json(user[0]);
+    } catch (error: any) {
+        return res.status(500).json({
+            message: "Error",
+            error: error.message
+        });
+    }
+}
+
+
 export const deleteByName = async (req: Request, res: Response) => {
     try {
         const { userName } = req.params;

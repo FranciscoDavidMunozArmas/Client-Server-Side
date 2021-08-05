@@ -5,6 +5,7 @@ import { connect } from '../../config/database.config';
 import { ServiceEmployee } from '../model/serviceemployee.model';
 import { AppointmentService } from '../model/appointmentservice.model';
 
+
 export const getAll = async (req: Request, res: Response) => {
     try {
         const conn = await connect();
@@ -58,6 +59,7 @@ export const getByIDs = async (req: Request, res: Response) => {
         });
     }
 }
+
 
 export const put = async (req: Request, res: Response) => {
     try {
@@ -121,6 +123,7 @@ export const deleteByAppointmentID = async (req: Request, res: Response) => {
         });
     }
 }
+
 
 export const getByServiceID = async (req: Request, res: Response) => {
     try {

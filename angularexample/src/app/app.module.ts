@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,11 +14,11 @@ import { FloatingComponent } from './components/floating/floating.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
 import { UserinfoComponent } from './components/userinfo/userinfo.component';
 import { DeleteAppointmentComponent } from './components/delete-appointment/delete-appointment.component';
-
-import { NgbModule}from '@ng-bootstrap/ng-bootstrap';
 import { ButtonsAppointmentComponent } from './components/buttons-appointment/buttons-appointment.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ClockComponent } from './components/clock/clock.component';
+
+import { NgbModule}from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ClockComponent } from './components/clock/clock.component';
     BrowserModule,
     AppRoutingModule,
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,12 @@
 import { Router } from 'express';
 
-import * as Controller from '../controller/appointmentservice.controller'
+import * as Controller from '../controller/example.controller'
+/**
+ * Borran 
+ *          import * as Controller from '../controller/example.controller';
+ * Y colocar un 
+ *          import * as Controller from '../controller/su_controlador.controller';
+ */
 
 const router = Router();
 
@@ -10,8 +16,8 @@ router.route("/")
 .delete(Controller.deleteAll);
 
 router.route("/:appointmentID")
-.get(Controller.getByIDs)
+.get(Controller.getByID)
 .put(Controller.put)
-.delete(Controller.deleteByIDs);
+.delete(Controller.deleteByID);
 
 export default router;
