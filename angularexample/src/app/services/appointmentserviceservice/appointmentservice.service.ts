@@ -17,6 +17,8 @@ export class AppointmentserviceService extends Service{
     return this.httpClient.get(super.getURI());
   }
 
-  
+  getById(id:string){
+    return this.httpClient.get(`${super.getURI()}/${id}`);
+  }
 
 }
