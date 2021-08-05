@@ -25,6 +25,9 @@ export class ServiceemployeeService extends Service{
     return this.httpClient.delete(super.getURI());
   }
 
+  getById(id:string){
+    return this.httpClient.get(`${super.getURI()}/${id}`);
+  }
 
 
 }
