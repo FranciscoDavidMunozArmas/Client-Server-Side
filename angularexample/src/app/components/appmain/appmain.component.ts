@@ -5,6 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { AppointmentService } from 'src/app/services/appointmentservice/appointment.service';
 import { UserService } from 'src/app/services/userservice/user.service';
 import { User } from 'src/app/interfaces/User';
+import { Appointment } from 'src/app/interfaces/Appointment';
 
 
 @Component({
@@ -16,63 +17,82 @@ export class AppmainComponent implements OnInit {
   message: string = "";
   closeModal: string = "";
 
-  appointments: Date[];
+  appointmentDays: Date[];
+  appointments: Appointment[];
+  todayAppointments: Appointment[];
   user: User;
 
   @ViewChild("createModal") createModal: ElementRef;
   @ViewChild("userModal") userModal: ElementRef;
   @ViewChild("exampleModal") exampleModal: ElementRef;
 
-  private cookieName:string = "logged-user";
+  private cookieName: string = "logged-user";
 
-  constructor(private modalService: NgbModal, private router: Router, private cookie:CookieService, private appointmentService: AppointmentService, private userService: UserService) { }
+  constructor(private modalService: NgbModal, private router: Router, private cookie: CookieService, private appointmentService: AppointmentService, private userService: UserService) { }
 
   ngOnInit(): void {
     const cookieValue = this.cookie.get(this.cookieName);
-    if(!cookieValue){
+    if (!cookieValue) {
       this.router.navigate(['/login']);
     }
 
-    this.getAppointments(cookieValue);
-    this.getUser(cookieValue);
+    this.setAppointments(cookieValue);
+    this.setUser(cookieValue);
 
   }
 
-  getUser(id: string){
+  setUser(id: string) {
     this.userService.getById(id)
-    .subscribe(
-      res => {
-        this.user = res[0];      }
-    );
+      .subscribe(
+        res => {
+          this.user = res[0];
+        }
+      );
   }
 
-  getAppointments(id: string){
+  setAppointments(id: string) {
     this.appointmentService.getAllByUser(id)
-    .subscribe(
-      res => {
-        this.appointments = res.map((element: any) => new Date(element.APPOINTMENTDAYHOUR));
-      }
-    )
+      .subscribe(
+        res => {
+          this.appointmentDays = res.map((element: any) => new Date(element.APPOINTMENTDAYHOUR));
+          this.appointments = res;
+        }
+      );
   }
 
-  clickAdd(){
+  removeAppointment(id: string) {
+    console.log(this.appointments);
+    this.appointments = this.appointments.filter((element: Appointment) => element.APPOINTMENTCODE !== id);
+    console.log(this.appointments);
+  }
+
+  editAppointment(appointment: Appointment) {
+    this.appointments = this.appointments.filter((element: Appointment) => {
+      if (element.APPOINTMENTCODE === appointment.APPOINTMENTCODE) {
+        element = appointment;
+      }
+      return element;
+    });
+  }
+
+  clickAdd() {
     this.triggerModal(this.createModal);
   }
 
-  clickUser(){
+  clickUser() {
     this.triggerModal(this.userModal);
   }
 
-  clickSignOut(){
+  clickSignOut() {
     this.cookie.delete(this.cookieName);
     this.router.navigate(['/login']);
   }
 
-  triggerModal(content:any){
+  triggerModal(content: any) {
     this.modalService.open(content).result;
   }
 
-  modalClose(){
+  modalClose() {
     this.modalService.dismissAll();
   }
 

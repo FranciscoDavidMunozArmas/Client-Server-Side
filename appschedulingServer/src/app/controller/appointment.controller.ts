@@ -78,7 +78,7 @@ export const deleteByID = async (req: Request, res: Response) => {
     try {
         const { appointmentID } = req.params;
         const conn = await connect();
-        await conn.query("select * from appointment where appointment.appointmentID=?", [appointmentID]);
+        await conn.query("delete from appointment where appointment.appointmentcode=?", [appointmentID]);
         return res.status(200).json({ 
             itemID: appointmentID ,
             message: "Item deleted" 

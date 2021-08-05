@@ -1,4 +1,4 @@
 export interface Employee {
-    employeeCode: string,
-    employeeName: string
+    EMPLOYEECODE: string,
+    EMPLOYEENAME: string
 }

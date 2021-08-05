@@ -14,11 +14,11 @@ router.route("/:serviceID/:appointmentID")
 .put(Controller.put)
 .delete(Controller.deleteByIDs);
 
-router.route("/appointment/:appointmentID")
+router.route("/service/:appointmentID")
 .get(Controller.getByAppointmentID)
 .delete(Controller.deleteByAppointmentID);
 
-router.route("/service/:serviceID")
+router.route("/appointment/:serviceID")
 .get(Controller.getByServiceID)
 .delete(Controller.deleteByServiceID);
 

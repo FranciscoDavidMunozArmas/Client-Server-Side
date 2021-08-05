@@ -1,17 +1,16 @@
-<div class="wrapper fadeInDown" *ngIf="appointments; else lazyloading">
+<div class="wrapper fadeInDown" *ngIf="appointmentDays; else lazyloading">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-9">
-                <app-calendarcontainer [appointments]="appointments"></app-calendarcontainer>
+                <app-calendarcontainer [appointments]="appointmentDays"></app-calendarcontainer>
             </div>
             <div class="col-sm fadeIn first">
                 <div class="container">
                     <app-clock></app-clock>
                 </div>
-                <app-buttons-appointment></app-buttons-appointment>
-                <app-buttons-appointment></app-buttons-appointment>
-                <app-buttons-appointment></app-buttons-appointment>
-                <app-buttons-appointment></app-buttons-appointment>
+                <div *ngFor="let appointment of appointments">
+                    <app-buttons-appointment (deleteEvent)="removeAppointment($event)" (editEvent)="editAppointment($event)" [appointment]="appointment"></app-buttons-appointment>
+                </div>
             </div>
         </div>
     </div>

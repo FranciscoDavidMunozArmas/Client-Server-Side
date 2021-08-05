@@ -97,7 +97,7 @@ export const getByAppointmentID = async (req: Request, res: Response) => {
     try {
         const {appointmentID} = req.params;
         const conn = await connect();
-        const appointment = await conn.query("select * from  appointmentservice  where appointmentservice.appointmentcode=?", [appointmentID]);
+        const appointment = await conn.query("select * from appointmentservice  where appointmentservice.appointmentcode=?", [appointmentID]);
         return res.status(200).json(appointment[0]);
     } catch (error: any) {
         return res.status(500).json({
@@ -129,7 +129,7 @@ export const getByServiceID = async (req: Request, res: Response) => {
     try {
         const {serviceID} = req.params;
         const conn = await connect();
-        const appointment = await conn.query("select * from  appointmentservice  where appointmentservice.servicecode=?", [serviceID]);
+        const appointment = await conn.query("select * from  appointmentservice where appointmentservice.servicecode=?", [serviceID]);
         return res.status(200).json(appointment[0]);
     } catch (error: any) {
         return res.status(500).json({
