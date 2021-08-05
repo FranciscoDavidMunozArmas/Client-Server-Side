@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Service} from '../service'; 
+import { Service } from '../service';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +30,7 @@ export class ServiceService extends Service {
    putService(id:string, service:Service){
      return this.httpClient.put(super.getURI()+"/"+id, service);
    }
-   
+
 
 
 
