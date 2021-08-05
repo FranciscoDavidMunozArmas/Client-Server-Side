@@ -17,7 +17,10 @@ export class ServiceemployeeService extends Service{
     return this.httpClient.get(super.getURI());
   }
 
+  postServiceEmployee(servicecode:string, employeecode: string){
+    return this.httpClient.post(super.getURI(), {servicecode:servicecode, employeecode:employeecode});
+  }
 
-
+  
 }
 
