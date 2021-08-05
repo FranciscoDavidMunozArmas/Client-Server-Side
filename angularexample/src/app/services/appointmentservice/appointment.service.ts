@@ -6,24 +6,12 @@ import { Service } from '../service';
   providedIn: 'root'
 })
 export class AppointmentService extends Service{
-<<<<<<< HEAD
-
-  constructor(private httpClient: HttpClient) { 
-    super();
-    super.extendsURI("/appointment");
-  }
-
-  getAll(id: string){
-    return this.httpClient.get(super.getURI());
-  }
-=======
   constructor(private httpClient: HttpClient) {
     super();
     super.extendsURI("/appointment");
    }
 
    getAll(id: string){
-     return this.httpClient.get(super.getURI()+"/")
+     return this.httpClient.get(super.getURI());
    }
->>>>>>> 61713c1bd1f99863702f17fa7a7487cc9104bdbd
 }
