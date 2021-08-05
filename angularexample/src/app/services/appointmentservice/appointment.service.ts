@@ -27,7 +27,11 @@ export class AppointmentService extends Service{
      return this.httpClient.get(`${super.getURI()}/${id}`);
    }
 
-   deleteById(id:string){
+  deleteById(id:string){
     return this.httpClient.delete(`${super.getURI()}/${id}`);
+  }
+
+  getAllByUser(id:string){
+    return this.httpClient.get(`${super.getURI()}/${id}`);
   }
 }
