@@ -10,7 +10,7 @@ import { Day } from '../../interfaces/Day';
 })
 export class CalendarComponent implements OnInit {
 
-  @Input() appointments?: Date[];
+  @Input() appointments: Date[];
   @Output() exampleOutput = new EventEmitter<string>();
 
   week: any = [
@@ -27,15 +27,15 @@ export class CalendarComponent implements OnInit {
   dateSelect: any = [];
   todayDate: number = 0;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(){
+  ngOnInit() {
     let date = new Date();
     this.todayDate = date.getUTCDate();
     this.getDaysFromDate(date.getUTCMonth() + 1, date.getUTCFullYear());
   }
 
-  getDaysFromDate(month: number, year: number){
+  getDaysFromDate(month: number, year: number) {
     const startDay = moment(`${year}/${month}/01`);
     const endDay = startDay.clone().endOf('month');
 
@@ -43,16 +43,16 @@ export class CalendarComponent implements OnInit {
     const diffDays = endDay.diff(startDay, "days", true);
 
     const numberOfDays = Math.round(diffDays);
-    
-    const arrayOfDays = Object.keys([... Array(numberOfDays)]).map((element: any) => {
+
+    const arrayOfDays = Object.keys([...Array(numberOfDays)]).map((element: any) => {
       element = parseInt(element) + 1;
       const dayObject = moment(`${year}-${month}-${element}`);
-      const day:Day = {
+      const day: Day = {
         name: dayObject.format('dddd'),
         value: element,
         indexWeek: dayObject.isoWeekday()
       }
-      if(this.checkAppointment(element, month, year)){
+      if (this.checkAppointment(element, month, year)) {
         day.appointment = true;
       }
 
@@ -61,19 +61,19 @@ export class CalendarComponent implements OnInit {
     this.monthSelect = arrayOfDays;
   }
 
-  checkAppointment(day: number, month:number, year:number):boolean{
-    if(this.appointments){
-      let actualAppointments = this.appointments.filter((element:Date) => element.getUTCDate() === day && element.getUTCMonth() === month && element.getUTCFullYear() === year);
+  checkAppointment(day: number, month: number, year: number): boolean {
+    if (this.appointments) {
+      let actualAppointments = this.appointments.filter((element: Date) => element.getDate() === day && (element.getMonth() + 1) === month && element.getFullYear() === year);
       return (actualAppointments.length !== 0);
     }
     return false;
   }
 
-  changeMonth(flag: number){
-    if(flag < 0){
+  changeMonth(flag: number) {
+    if (flag < 0) {
       const prevDate = this.dateSelect.clone().subtract(1, "month");
       this.getDaysFromDate(prevDate.format('MM'), prevDate.format('YYYY'));
-    } else if (flag > 0){
+    } else if (flag > 0) {
       const nextDate = this.dateSelect.clone().add(1, "month");
       this.getDaysFromDate(nextDate.format('MM'), nextDate.format('YYYY'));
     } else {
@@ -82,11 +82,11 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  clickDay(day:any){
+  clickDay(day: any) {
     const monthYear = this.dateSelect.format('YYYY-MM');
     const parse = `${monthYear}-${day.value}/01`;
     const objectDate = moment(parse);
-    this.exampleOutput?.emit(parse);
+    this.exampleOutput.emit(parse);
   }
 
 }

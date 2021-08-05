@@ -103,12 +103,12 @@ export const getByName = async (req: Request, res: Response) => {
     }
 }
 
-export const postByNamePassword = async (req: Request, res: Response) => {
+export const postByCodePassword = async (req: Request, res: Response) => {
     try {
-        const { username, userpassword } = req.body;
-        console.log(username);
+        const { usercode, userpassword } = req.body;
+        console.log(usercode);
         const conn = await connect();
-        const user = await conn.query("select * from user where user.username=? and user.userpassword=?", [username, userpassword]);
+        const user = await conn.query("select * from user where user.usercode=? and user.userpassword=?", [usercode, userpassword]);
         return res.status(200).json(user[0]);
     } catch (error: any) {
         return res.status(500).json({

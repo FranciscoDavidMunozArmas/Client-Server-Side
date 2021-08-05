@@ -18,15 +18,15 @@ export class UserService extends Service{
   }
 
   getById(id:string){
-    return this.httpClient.get(`${super.getURI()}/${id}`);
+    return this.httpClient.get<any[]>(`${super.getURI()}/${id}`);
   }
 
   postUser(user: User){
     return this.httpClient.post<User>(super.getURI(), user);
   }
 
-  postByNamePassword(name: string, password:string){
-    return this.httpClient.post<User[]>(`${super.getURI()}/user`, {username: name, userpassword: password});
+  postByCodePassword(code: string, password:string){
+    return this.httpClient.post<User[]>(`${super.getURI()}/user`, {usercode: code, userpassword: password});
   }
 
   putUser(id:string, user: User){

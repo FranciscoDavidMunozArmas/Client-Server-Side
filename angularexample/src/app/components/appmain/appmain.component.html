@@ -1,8 +1,8 @@
-<div class="wrapper fadeInDown">
+<div class="wrapper fadeInDown" *ngIf="appointments; else lazyloading">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-9">
-                <app-calendarcontainer></app-calendarcontainer>
+                <app-calendarcontainer [appointments]="appointments"></app-calendarcontainer>
             </div>
             <div class="col-sm fadeIn first">
                 <div class="container">
@@ -28,9 +28,13 @@
     </ng-template>
 
     <ng-template #userModal let-modal>
-        <app-userinfo (closeEvent)="modalClose()"></app-userinfo>
+        <app-userinfo [user]="user" (closeEvent)="modalClose()"></app-userinfo>
     </ng-template>
 </div>
+
+<ng-template #lazyloading>
+    Loading...
+</ng-template>
 
 <div class="float-right-bottom fadeIn first">
     <div class="d-flex flex-column-reverse">

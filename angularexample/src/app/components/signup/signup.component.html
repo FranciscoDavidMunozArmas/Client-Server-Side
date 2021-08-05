@@ -10,7 +10,7 @@
             <!-- Login Form -->
             <form class="form-container" (submit)="signUp($event)">
                 <div class="form-group">
-                    <input type="text" id="userCode" class="form-control fadeIn first" (change)="onChange($event)" [value]="user.usercode" name="usercode" placeholder="User code">
+                    <input type="text" name="usercode" (change)="onChange($event)" [value]="user.usercode" class="form-control fadeIn second" placeholder="User" #username>
                 </div>
                 <div class="form-group">
                     <input type="text" id="login" class="form-control fadeIn second" (change)="onChange($event)" [value]="user.username" name="username" placeholder="User name">

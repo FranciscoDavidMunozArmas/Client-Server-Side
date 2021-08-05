@@ -15,6 +15,6 @@ router.route("/:appointmentID")
 .delete(Controller.deleteByID);
 
 router.route("/user/:userID")
-.get(Controller.getAllByUser)
+.get(Controller.getAllByUser);
 
 export default router;

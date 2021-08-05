@@ -13,8 +13,8 @@ router.route("/:userID")
 .put(Controller.put)
 .delete(Controller.deleteByID);
 
-router.route("/user")
-.post(Controller.postByNamePassword);
+router.route("/user/")
+.post(Controller.postByCodePassword);
 
 router.route("/name/:userName")
 .get(Controller.getByName)

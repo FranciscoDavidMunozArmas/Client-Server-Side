@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { User } from 'src/app/interfaces/User';
 
 @Component({
   selector: 'app-userinfo',
@@ -6,7 +7,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./userinfo.component.css']
 })
 export class UserinfoComponent implements OnInit {
-
+  
+  @Input() user: User;
   @Output() closeEvent = new EventEmitter<string>();
 
   constructor() { }

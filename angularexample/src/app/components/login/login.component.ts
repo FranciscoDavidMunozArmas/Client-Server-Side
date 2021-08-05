@@ -12,7 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class LoginComponent implements OnInit {
   
   user: any = {
-    username: "",
+    usercode: "",
     userpassword: ""
   }
 
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   logIn(e:any){
     e.preventDefault();
     this.message = "";
-    this.userService.postByNamePassword(this.user.username, this.user.userpassword)
+    this.userService.postByCodePassword(this.user.usercode, this.user.userpassword)
     .subscribe(res => {
       const user:User = res[0];
       if(!user){
