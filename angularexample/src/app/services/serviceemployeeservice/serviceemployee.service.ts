@@ -21,6 +21,11 @@ export class ServiceemployeeService extends Service{
     return this.httpClient.post(super.getURI(), {servicecode:servicecode, employeecode:employeecode});
   }
 
-  
+  deleteAll(){
+    return this.httpClient.delete(super.getURI());
+  }
+
+
+
 }
 
