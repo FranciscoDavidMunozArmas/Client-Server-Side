@@ -16,7 +16,7 @@ export class ServiceService extends Service {
     return this.httpClient.get(super.getURI());
   }
   getById(id: string) {
-    return this.httpClient.get(super.getURI() + "/" + id);
+    return this.httpClient.get(`${super.getURI()}/${id}`);
   }
   postService(service: Service) {
     return this.httpClient.post(super.getURI(), service);
@@ -25,10 +25,10 @@ export class ServiceService extends Service {
     return this.httpClient.delete(super.getURI());
   }
   deleteById(id: string) {
-    return this.httpClient.delete(super.getURI() + "/" + id);
+    return this.httpClient.delete(`${super.getURI()}/${id}`);
   }
   putService(id: string, service: Service) {
-    return this.httpClient.put(super.getURI() + "/" + id, service);
+    return this.httpClient.put(`${super.getURI()}/${id}`, service);
   }
 
 }
