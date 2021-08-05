@@ -14,4 +14,8 @@ export class AppointmentService extends Service{
    getAll(id: string){
      return this.httpClient.get(super.getURI());
    }
+
+   postAppointment(appointmentcode:string,usercode:string,appointmentdayhour:Date){
+     return this.httpClient.post(super.getURI(),{appointmentcode:appointmentcode, usercode:usercode, appointmentdayhour:appointmentdayhour});
+   }
 }
