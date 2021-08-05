@@ -31,7 +31,4 @@ export class ServiceService extends Service {
      return this.httpClient.put(super.getURI()+"/"+id, service);
    }
 
-
-
-
 }
