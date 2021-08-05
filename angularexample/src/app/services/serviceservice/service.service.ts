@@ -1,9 +1,23 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Service} from '../service'; 
 
 @Injectable({
   providedIn: 'root'
 })
-export class ServiceService {
+export class ServiceService extends Service {
 
-  constructor() { }
+  constructor( private httpClient: HttpClient) {
+    super();
+    super.extendsURI("/service");
+   }
+
+   getAll(){
+     return this.httpClient.get(super.getURI());
+   }
+   getById(id:string){
+     return this.httpClient.get(super.getURI()+"/"+id);
+   }
+   
+
 }
