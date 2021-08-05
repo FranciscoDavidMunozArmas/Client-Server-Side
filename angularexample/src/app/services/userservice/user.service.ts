@@ -8,8 +8,6 @@ import { Service } from '../service';
 })
 export class UserService extends Service{
 
-
-
   constructor(private httpClient: HttpClient) {
     super();
     super.extendsURI("/user");
