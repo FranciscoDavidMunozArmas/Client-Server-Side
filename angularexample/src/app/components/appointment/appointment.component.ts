@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-appointment',
@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppointmentComponent implements OnInit {
 
+  @Output() closeEvent = new EventEmitter<any>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  submitForm(){
+    this.closeForm();
+  }
+
+  cancelForm(){
+    this.closeForm();
+  }
+
+  closeForm(){
+    this.closeEvent.emit();
   }
 
 }

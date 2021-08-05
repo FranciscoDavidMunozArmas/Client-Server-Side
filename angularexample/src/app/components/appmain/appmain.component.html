@@ -22,7 +22,7 @@
                 <a class="btn close-btn" (click)="modalClose()"><span class="fa fa-times"></span></a>
             </div>
             <div class="card-body">
-                <app-appointment></app-appointment>
+                <app-appointment (closeEvent)="modalClose()"></app-appointment>
             </div>
         </div>
     </ng-template>

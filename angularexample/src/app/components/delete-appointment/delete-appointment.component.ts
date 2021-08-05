@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-delete-appointment',
@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteAppointmentComponent implements OnInit {
 
+  @Output() closeEvent = new EventEmitter<any>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  agree(){
+    this.closeEvent.emit();
+  }
+
+  disagree(){
+    this.closeEvent.emit();
+  }
+
+  closeForm(){
+    this.closeEvent.emit();
   }
 
 }
