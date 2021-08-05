@@ -12,5 +12,11 @@ export class AppointmentserviceService extends Service{
   constructor(private httpClient: HttpClient) {
     super();
     super.extendsURI("/appointmentservice");
-   }
+  }
+  getAll(){
+    return this.httpClient.get(super.getURI());
+  }
+
+  
+
 }
