@@ -1,6 +1,6 @@
 export interface Appointment{
-    appointmentcode: string,
-    servicecode: string,
-    usercode: string,
-    appointmentdayhour: Date
+    APPOINTMENTCODE: string,
+    SERVICECODE: string,
+    USERCODE: string,
+    APPOINTMENTDAYHOUR: Date
 };

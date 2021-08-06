@@ -6,7 +6,7 @@ import { User } from '../model/user.model';
 export const getAll = async (req: Request, res: Response) => {
     try {
         const conn = await connect();
-        const users = await conn.query("select * from user");
+        const users = await conn.query("select * from USER");
         return res.status(200).json(users[0]);
     } catch (error: any) {
         return res.status(500).json({
@@ -20,7 +20,7 @@ export const post = async (req: Request, res: Response) => {
     try {
         const user: User = req.body;
         const conn = await connect();
-        await conn.query(`insert into user set ?`, [user]);
+        await conn.query(`insert into USER set ?`, [user]);
         return res.status(200).json(user);
     } catch (error: any) {
         return res.status(500).json({
@@ -33,7 +33,7 @@ export const post = async (req: Request, res: Response) => {
 export const deleteAll = async (req: Request, res: Response) => {
     try {
         const conn = await connect();
-        await conn.query("delete from user");
+        await conn.query("delete from USER");
         return res.status(200).json({ message: "Items deleted" });
     } catch (error: any) {
         return res.status(500).json({
@@ -47,7 +47,7 @@ export const getByID = async (req: Request, res: Response) => {
     try {
         const { userID } = req.params;
         const conn = await connect();
-        const user = await conn.query("select * from user where user.usercode=?", [userID]);
+        const user = await conn.query("select * from USER where USER.USERCODE=?", [userID]);
         return res.status(200).json(user[0]);
     } catch (error: any) {
         return res.status(500).json({
@@ -62,7 +62,7 @@ export const put = async (req: Request, res: Response) => {
         const { userID }= req.params
         const user: User = req.body;
         const conn = await connect();
-        await conn.query(`update user set ? where user.usercode=?`, [user, userID]);
+        await conn.query(`update USER set ? where USER.USERCODE=?`, [user, userID]);
         return res.status(200).json(user);
     } catch (error: any) {
         return res.status(500).json({
@@ -76,7 +76,7 @@ export const deleteByID = async (req: Request, res: Response) => {
     try {
         const { userID } = req.params;
         const conn = await connect();
-        await conn.query("delete from user where user.usercode=?", [userID]);
+        await conn.query("delete from USER where USER.USERCODE=?", [userID]);
         return res.status(200).json({ 
             itemID: userID ,
             message: "Item deleted" 
@@ -93,7 +93,7 @@ export const getByName = async (req: Request, res: Response) => {
     try {
         const { userName } = req.params;
         const conn = await connect();
-        const user = await conn.query("select * from user where user.username=?", [userName]);
+        const user = await conn.query("select * from USER where USER.USERNAME=?", [userName]);
         return res.status(200).json(user[0]);
     } catch (error: any) {
         return res.status(500).json({
@@ -108,7 +108,7 @@ export const postByCodePassword = async (req: Request, res: Response) => {
         const { usercode, userpassword } = req.body;
         console.log(usercode);
         const conn = await connect();
-        const user = await conn.query("select * from user where user.usercode=? and user.userpassword=?", [usercode, userpassword]);
+        const user = await conn.query("select * from USER where USER.USERCODE=? and USER.USERPASSWORD=?", [usercode, userpassword]);
         return res.status(200).json(user[0]);
     } catch (error: any) {
         return res.status(500).json({
@@ -123,7 +123,7 @@ export const deleteByName = async (req: Request, res: Response) => {
     try {
         const { userName } = req.params;
         const conn = await connect();
-        await conn.query("delete from user where user.username=?", [userName]);
+        await conn.query("delete from USER where USER.USERNAME=?", [userName]);
         return res.status(200).json({ 
             itemName: userName,
             message: "Item deleted" 

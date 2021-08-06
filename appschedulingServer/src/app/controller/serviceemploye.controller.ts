@@ -8,7 +8,7 @@ import { ServiceEmployee } from '../model/serviceemployee.model';
 export const getAll = async (req: Request, res: Response) => {
     try {
         const conn = await connect();
-        const serviceemployee = await conn.query("select * from serviceemployee");
+        const serviceemployee = await conn.query("select * from SERVICEEMPLOYEE");
         return res.status(200).json(serviceemployee[0]);
     } catch (error: any) {
         return res.status(500).json({
@@ -22,7 +22,7 @@ export const post = async (req: Request, res: Response) => {
     try {
         const register: ServiceEmployee=req.body;
         const conn = await connect();
-        await conn.query(`insert into serviceemployee set ?`, [register]);
+        await conn.query(`insert into SERVICEEMPLOYEE set ?`, [register]);
         return res.status(200).json(register);
     } catch (error: any) {
         return res.status(500).json({
@@ -35,7 +35,7 @@ export const post = async (req: Request, res: Response) => {
 export const deleteAll = async (req: Request, res: Response) => {
     try {
         const conn = await connect();
-        await conn.query("delete from serviceemployee");
+        await conn.query("delete from SERVICEEMPLOYEE");
         return res.status(200).json({ message: "Items deleted" });
     } catch (error: any) {
         return res.status(500).json({
@@ -49,7 +49,7 @@ export const getByIDs = async (req: Request, res: Response) => {
     try {
         const {serviceID} = req.params;
         const conn = await connect();
-        const service = await conn.query("select * from  serviceemployee  where serviceemployee.servicecode=?", [serviceID]);
+        const service = await conn.query("select * from  SERVICEEMPLOYEE  where SERVICEEMPLOYEE.SERVICECODE=?", [serviceID]);
         return res.status(200).json(service[0]);
     } catch (error: any) {
         return res.status(500).json({
@@ -64,7 +64,7 @@ export const put = async (req: Request, res: Response) => {
         const { serviceID, employeeID }=req.params;
         const register: ServiceEmployee=req.body;
         const conn = await connect();
-        await conn.query('update serviceemployee set ? where serviceemployee.servicecode = ? and serviceemployee.employeecode = ?', [register, serviceID, employeeID]);
+        await conn.query('update SERVICEEMPLOYEE set ? where SERVICEEMPLOYEE.SERVICECODE = ? and SERVICEEMPLOYEE.EMPLOYEECODE = ?', [register, serviceID, employeeID]);
         return res.status(200).json(register);
     } catch (error: any) {
         return res.status(500).json({
@@ -79,7 +79,7 @@ export const deleteByIDs = async (req: Request, res: Response) => {
     try {
         const { serviceID, employeeID }=req.params;
         const conn = await connect();
-        await conn.query("delete from serviceemployee where serviceemployee.servicecode = ? and serviceemployee.employeecode = ?", [serviceID, employeeID]);
+        await conn.query("delete from SERVICEEMPLOYEE where SERVICEEMPLOYEE.SERVICECODE = ? and SERVICEEMPLOYEE.EMPLOYEECODE= ?", [serviceID, employeeID]);
         return res.status(200).json({ 
             itemID: serviceID ,
             message: "Item deleted" 
@@ -96,7 +96,7 @@ export const getByServiceID = async (req: Request, res: Response) => {
     try {
         const {serviceID} = req.params;
         const conn = await connect();
-        const service = await conn.query("select * from  serviceemployee  where serviceemployee.servicecode=?", [serviceID]);
+        const service = await conn.query("select * from  SERVICEEMPLOYEE  where SERVICEEMPLOYEE.SERVICECODE=?", [serviceID]);
         return res.status(200).json(service[0]);
     } catch (error: any) {
         return res.status(500).json({
@@ -111,7 +111,7 @@ export const deleteByServiceID = async (req: Request, res: Response) => {
     try {
         const {serviceID}=req.params;
         const conn = await connect();
-        await conn.query("delete from serviceemployee where serviceemployee.servicecode=?", [serviceID]);
+        await conn.query("delete from SERVICEEMPLOYEE where SERVICEEMPLOYEE.SERVICECODE=?", [serviceID]);
         return res.status(200).json({ 
             itemID: serviceID ,
             message: "Item deleted" 
@@ -128,7 +128,7 @@ export const getByEmployeeID = async (req: Request, res: Response) => {
     try {
         const {employeeID} = req.params;
         const conn = await connect();
-        const service = await conn.query("select * from  serviceemployee  where serviceemployee.employeecode = ?", [employeeID]);
+        const service = await conn.query("select * from  SERVICEEMPLOYEE  where SERVICEEMPLOYEE.EMPLOYEECODE = ?", [employeeID]);
         return res.status(200).json(service[0]);
     } catch (error: any) {
         return res.status(500).json({
@@ -143,7 +143,7 @@ export const deleteByEmployeeID = async (req: Request, res: Response) => {
     try {
         const {employeeID}=req.params;
         const conn = await connect();
-        await conn.query("delete from serviceemployee where serviceemployee.employeecode = ?", [employeeID]);
+        await conn.query("delete from SERVICEEMPLOYEE where SERVICEEMPLOYEE.EMPLOYEECODE= ?", [employeeID]);
         return res.status(200).json({ 
             itemID: employeeID ,
             message: "Item deleted" 

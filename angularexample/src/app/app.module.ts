@@ -20,6 +20,7 @@ import { DeleteAppointmentComponent } from './components/delete-appointment/dele
 import { ButtonsAppointmentComponent } from './components/buttons-appointment/buttons-appointment.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ClockComponent } from './components/clock/clock.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ClockComponent } from './components/clock/clock.component';
     AppRoutingModule,
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

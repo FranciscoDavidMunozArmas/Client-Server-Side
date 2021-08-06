@@ -8,7 +8,7 @@ import { Appointment } from '../model/appointment.model';
 export const getAll = async (req: Request, res: Response) => {
     try {
         const conn = await connect();
-        const appointments = await conn.query("select * from appointment");
+        const appointments = await conn.query("select * from APPOINTMENT");
         return res.status(200).json(appointments[0]);
     } catch (error: any) {
         return res.status(500).json({
@@ -22,7 +22,7 @@ export const post = async (req: Request, res: Response) => {
     try {
         const appointment: Appointment = req.body;
         const conn = await connect();
-        await conn.query(`insert into appointment set ?`, [appointment]);
+        await conn.query('insert into APPOINTMENT set ?', [appointment]);
         return res.status(200).json(appointment);
     } catch (error: any) {
         return res.status(500).json({
@@ -35,7 +35,7 @@ export const post = async (req: Request, res: Response) => {
 export const deleteAll = async (req: Request, res: Response) => {
     try {
         const conn = await connect();
-        await conn.query("delete from appointment");
+        await conn.query("delete from APPOINTMENT");
         return res.status(200).json({ message: "Items deleted" });
     } catch (error: any) {
         return res.status(500).json({
@@ -49,7 +49,7 @@ export const getByID = async (req: Request, res: Response) => {
     try {
         const { appointmentID } = req.params;
         const conn = await connect();
-        const appointment = await conn.query("select * from appointment where appointment.appointmentcode=?", [appointmentID]);
+        const appointment = await conn.query("select * from APPOINTMENT where APPOINTMENT.APPOINTMENTCODE=?", [appointmentID]);
         return res.status(200).json(appointment[0]);
     } catch (error: any) {
         return res.status(500).json({
@@ -64,7 +64,7 @@ export const put = async (req: Request, res: Response) => {
         const { appointmentID }= req.params
         const appointment: Appointment = req.body;
         const conn = await connect();
-        await conn.query(`update appointment set ? where appointment.appointmentcode=?`, [appointment, appointmentID]);
+        await conn.query(`update APPOINTMENT set ? where APPOINTMENT.APPOINTMENTCODE=?`, [appointment, appointmentID]);
         return res.status(200).json(appointment);
     } catch (error: any) {
         return res.status(500).json({
@@ -78,7 +78,7 @@ export const deleteByID = async (req: Request, res: Response) => {
     try {
         const { appointmentID } = req.params;
         const conn = await connect();
-        await conn.query("delete from appointment where appointment.appointmentcode=?", [appointmentID]);
+        await conn.query("delete from APPOINTMENT where APPOINTMENT.APPOINTMENTCODE=?", [appointmentID]);
         return res.status(200).json({ 
             itemID: appointmentID ,
             message: "Item deleted" 
@@ -95,7 +95,7 @@ export const getAllByUser = async (req: Request, res: Response) => {
     try {
         const { userID } = req.params;
         const conn = await connect();
-        const appointment = await conn.query("select * from appointment where appointment.usercode=?", [userID]);
+        const appointment = await conn.query("select * from APPOINTMENT where APPOINTMENT.USERCODE=?", [userID]);
         return res.status(200).json(appointment[0]);
     } catch (error: any) {
         return res.status(500).json({
