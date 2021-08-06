@@ -29,6 +29,7 @@ export class ButtonsAppointmentComponent implements OnInit {
       }
     );
     this.setDate();
+    
   }
 
   setDate(){
@@ -54,6 +55,7 @@ export class ButtonsAppointmentComponent implements OnInit {
   editItem(appointment: Appointment){
     this.appointment = appointment;
     this.editEvent.emit(this.appointment);
+    this.ngOnInit();
     this.modalClose();
   }
 

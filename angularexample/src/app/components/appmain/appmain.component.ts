@@ -19,12 +19,11 @@ export class AppmainComponent implements OnInit {
 
   appointmentDays: Date[];
   appointments: Appointment[];
-  todayAppointments: Appointment[];
   user: User;
 
   @ViewChild("createModal") createModal: ElementRef;
   @ViewChild("userModal") userModal: ElementRef;
-  @ViewChild("exampleModal") exampleModal: ElementRef;
+  @ViewChild("calendar") calendar: ElementRef;
 
   private cookieName: string = "logged-user";
 
@@ -55,23 +54,24 @@ export class AppmainComponent implements OnInit {
       .subscribe(
         res => {
           this.appointments = res;
-          this.setApppointmentDays();
+          this.setAppointmentDays();
         }
       );
   }
 
-  setApppointmentDays(){
+  setAppointmentDays() {
     this.appointmentDays = this.appointments.map((element: any) => new Date(element.APPOINTMENTDAYHOUR));
+    this.calendar.nativeElement.refresh();
   }
 
-  addAppointment(appointment:Appointment){
+  addAppointment(appointment: Appointment) {
     this.appointments.push(appointment);
-    this.setApppointmentDays();
+    this.setAppointmentDays();
   }
 
   removeAppointment(id: string) {
     this.appointments = this.appointments.filter((element: Appointment) => element.APPOINTMENTCODE !== id);
-    this.setApppointmentDays();
+    this.setAppointmentDays();
   }
 
   editAppointment(appointment: Appointment) {
@@ -81,7 +81,7 @@ export class AppmainComponent implements OnInit {
       }
       return element;
     });
-    this.setApppointmentDays();
+    this.setAppointmentDays();
   }
 
   clickAdd() {

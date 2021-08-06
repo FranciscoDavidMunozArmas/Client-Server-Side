@@ -1,4 +1,3 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import * as moment from "moment";
 import { Day } from '../../interfaces/Day';
@@ -11,7 +10,7 @@ import { Day } from '../../interfaces/Day';
 export class CalendarComponent implements OnInit {
 
   @Input() appointments: Date[];
-  @Output() exampleOutput = new EventEmitter<string>();
+  @Output() dateOutput = new EventEmitter<Date>();
 
   week: any = [
     "Monday",
@@ -31,8 +30,8 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit() {
     let date = new Date();
-    this.todayDate = date.getUTCDate();
-    this.getDaysFromDate(date.getUTCMonth() + 1, date.getUTCFullYear());
+    this.todayDate = date.getDate();
+    this.getDaysFromDate(date.getMonth() + 1, date.getFullYear());
   }
 
   getDaysFromDate(month: number, year: number) {
@@ -83,10 +82,8 @@ export class CalendarComponent implements OnInit {
   }
 
   clickDay(day: any) {
-    const monthYear = this.dateSelect.format('YYYY-MM');
-    const parse = `${monthYear}-${day.value}/01`;
-    const objectDate = moment(parse);
-    this.exampleOutput.emit(parse);
+    const parse = this.dateSelect.format('YYYY/MM/DD');
+    this.dateOutput.emit(new Date(parse));
   }
 
 }

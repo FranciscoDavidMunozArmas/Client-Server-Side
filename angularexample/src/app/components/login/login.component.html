@@ -10,7 +10,7 @@
             <!-- Login Form -->
             <form (submit)="logIn($event)" class="form-container">
                 <div class="form-group">
-                    <input type="text" name="usercode" (change)="onChange($event)" [value]="user.usercode" class="form-control fadeIn second" placeholder="User" #username required>
+                    <input type="text" name="usercode" (change)="onChange($event)" [value]="user.usercode" class="form-control fadeIn second" placeholder="User CI" #username required>
                 </div>
                 <div class="form-group">
                     <input type="password" name="userpassword" (change)="onChange($event)" [value]="user.userpassword" class="form-control fadeIn third" placeholder="Password" #userpassword required>

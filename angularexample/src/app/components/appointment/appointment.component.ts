@@ -6,6 +6,7 @@ import { EmployeeService } from 'src/app/services/employeeservice/employee.servi
 import { Service } from 'src/app/interfaces/Service';
 import { ServiceService } from 'src/app/services/serviceservice/service.service';
 import { v4 } from "uuid";
+import * as moment from "moment";
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -34,13 +35,15 @@ export class AppointmentComponent implements OnInit {
     private cookie: CookieService) { }
 
   ngOnInit(): void {
-    this.setEmployees();
     this.setServices();
-    if(this.appointment){
+    this.setEmployees();
+    this.setInput();
+  }
+
+  setInput() {
+    if (this.appointment) {
       this.input.servicecode = this.appointment.SERVICECODE;
       this.input.date = new Date(this.appointment.APPOINTMENTDAYHOUR);
-    } else {
-      this.input.servicecode = this.services[0].SERVICECODE;
     }
   }
 
@@ -64,6 +67,7 @@ export class AppointmentComponent implements OnInit {
 
   onChange(e: any) {
     this.input = { ... this.input, [e.target.name]: e.target.value };
+    console.log(this.input);
   }
 
   submitForm(e: any) {
@@ -72,30 +76,31 @@ export class AppointmentComponent implements OnInit {
     this.closeForm();
   }
 
-  saveAppointment(){
+  saveAppointment() {
     if (!this.appointment) {
       const userID = this.cookie.get(this.cookieName);
-      this.appointment = { 
+      this.appointment = {
         APPOINTMENTCODE: v4(),
         SERVICECODE: this.input.servicecode,
         USERCODE: userID,
         APPOINTMENTDAYHOUR: this.input.date
       }
+      console.log(this.appointment);
       this.appointmentService.post(this.appointment)
-      .subscribe(
-        () => {
-          this.saveEvent.emit(this.appointment);
-        }
-      );
+        .subscribe(
+          () => {
+            this.saveEvent.emit(this.appointment);
+          }
+        );
     } else {
-      this.appointment = {... this.appointment, SERVICECODE: this.input.servicecode}
-      this.appointment = {... this.appointment, APPOINTMENTDAYHOUR: this.input.date}
+      this.appointment = { ... this.appointment, SERVICECODE: this.input.servicecode }
+      this.appointment = { ... this.appointment, APPOINTMENTDAYHOUR: this.input.date }
       this.appointmentService.put(this.appointment.APPOINTMENTCODE, this.appointment)
-      .subscribe(
-        () => {
-          this.saveEvent.emit(this.appointment);
-        }
-      );
+        .subscribe(
+          () => {
+            this.saveEvent.emit(this.appointment);
+          }
+        );
     }
   }
 

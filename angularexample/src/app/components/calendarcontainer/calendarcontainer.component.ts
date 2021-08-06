@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-calendarcontainer',
@@ -8,16 +8,15 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CalendarcontainerComponent implements OnInit {
 
   @Input() appointments: Date[];
+  @Output() dateEvent = new EventEmitter<Date>();
   constructor() { }
-
-  example: string = "";
 
   ngOnInit(): void {
 
   }
 
-  setExample(example: string) {
-    this.example = example;
+  sendParent(date: Date) {
+    this.dateEvent.emit(date);
   }
 
 }
