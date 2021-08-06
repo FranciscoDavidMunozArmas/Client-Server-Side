@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     5/8/2021 20:19:13                            */
+/* Created on:     6/8/2021 09:55:25                            */
 /*==============================================================*/
 
 
@@ -80,11 +80,11 @@ alter table SERVICEEMPLOYEE add constraint FK_SERVICEEMPLOYEE foreign key (SERVI
 alter table SERVICEEMPLOYEE add constraint FK_SERVICEEMPLOYEE2 foreign key (EMPLOYEECODE)
       references EMPLOYEE (EMPLOYEECODE) on delete restrict on update restrict;
 
-insert into Employee values ("1751990332", "Xavier");
-insert into Employee values ("1751990333", "Loreto");
-insert into Employee values ("1751990334", "Daniel");
+insert into EMPLOYEE values ("1751990332", "Xavier");
+insert into EMPLOYEE values ("1751990333", "Loreto");
+insert into EMPLOYEE values ("1751990334", "Daniel");
 
-insert into Service values ("1111111", "Corte de pelo", "Null");
-insert into Service values ("1111112", "Afeitar", "Null");
-insert into Service values ("1111113", "Pintar cabello", "Null");
-insert into Service values ("1111114", "Lavado de pelo", "Null");
+insert into SERVICE values ("1111111", "Corte de pelo", "Null");
+insert into SERVICE values ("1111112", "Afeitar", "Null");
+insert into SERVICE values ("1111113", "Pintar cabello", "Null");
+insert into SERVICE values ("1111114", "Lavado de pelo", "Null");
