@@ -13,10 +13,10 @@ export class ServiceService extends Service {
   }
 
   getAll() {
-    return this.httpClient.get(super.getURI());
+    return this.httpClient.get<any[]>(super.getURI());
   }
   getById(id: string) {
-    return this.httpClient.get(`${super.getURI()}/${id}`);
+    return this.httpClient.get<any>(`${super.getURI()}/${id}`);
   }
   postService(service: Service) {
     return this.httpClient.post(super.getURI(), service);

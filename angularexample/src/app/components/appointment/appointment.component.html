@@ -1,25 +1,24 @@
-<form method="GET" action="#">
+<div *ngIf="employees && services">
+    Loading...
+</div>
+<form (submit)="submitForm($event)">
     <fieldset>
         <legend>Informacion nueva cita</legend>
         <div class="mb-3">
             <label for="disabledSelect" class="form-label">Servicio</label>
-            <select id="disabledSelect" class="form-select">
-             <option>Corte Cabello</option>
-             <option>Manicure</option>
-             <option>Pedicure</option>
+            <select id="disabledSelect" [value]="input.servicecode" name="servicecode" (change)="onChange($event)" class="form-select" autofocus>
+                <option *ngFor="let service of services" [value]="service.SERVICECODE" [selected]="input.servicecode === service.SERVICECODE">{{service.SERVICENAME}}</option>
             </select>
         </div>
         <div class="mb-3">
             <label for="disabledSelectEmployeeName" class="form-label">Nombre empleado</label>
             <select id="disabledSelectEmployeeName" class="form-select">
-          <option>Juan</option>
-          <option>Pepe</option>
-          <option>Bryan</option>
+                <option *ngFor="let employee of employees">{{employee.EMPLOYEENAME}}</option>
         </select>
         </div>
         <div class="mb-3">
             <label for="dateAppointment" class="form-label">Fecha</label>
-            <input type="datetime-local" id="dateAppointment" class="form-control">
+            <input type="datetime-local" name="date" [value]="input.date" (change)="onChange($event)" class="form-control" required>
         </div>
         <div class="mb-3">
             <label>Notificar: </label>
@@ -45,7 +44,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md bd-gradient-primary">
-                    <button type="button" class="btn btn-primary" (click)="submitForm()">Guardar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
                 <div class="col-md bd-gradient-primary">
                     <button type="button" class="btn btn-primary" (click)="cancelForm()">Cancelar</button>

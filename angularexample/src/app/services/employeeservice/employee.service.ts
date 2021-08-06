@@ -13,7 +13,7 @@ export class EmployeeService extends Service {
   }
 
   getAll() {
-    return this.httpClient.get(super.getURI());
+    return this.httpClient.get<any[]>(super.getURI());
   }
   getById(id: string) {
     return this.httpClient.get(`${super.getURI()}/${id}`);

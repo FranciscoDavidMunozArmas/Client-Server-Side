@@ -54,16 +54,24 @@ export class AppmainComponent implements OnInit {
     this.appointmentService.getAllByUser(id)
       .subscribe(
         res => {
-          this.appointmentDays = res.map((element: any) => new Date(element.APPOINTMENTDAYHOUR));
           this.appointments = res;
+          this.setApppointmentDays();
         }
       );
   }
 
+  setApppointmentDays(){
+    this.appointmentDays = this.appointments.map((element: any) => new Date(element.APPOINTMENTDAYHOUR));
+  }
+
+  addAppointment(appointment:Appointment){
+    this.appointments.push(appointment);
+    this.setApppointmentDays();
+  }
+
   removeAppointment(id: string) {
-    console.log(this.appointments);
     this.appointments = this.appointments.filter((element: Appointment) => element.APPOINTMENTCODE !== id);
-    console.log(this.appointments);
+    this.setApppointmentDays();
   }
 
   editAppointment(appointment: Appointment) {
@@ -73,6 +81,7 @@ export class AppmainComponent implements OnInit {
       }
       return element;
     });
+    this.setApppointmentDays();
   }
 
   clickAdd() {
