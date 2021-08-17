@@ -1,23 +1,31 @@
-import { Router } from 'express';
-import * as Controller from '../controller/user.controller';
+import { Router } from "express";
+import multerConfig from "../../config/multer.config";
+import * as UserController from '../controllers/user.controller';
+import * as AppointmentController from '../controllers/appointment.controller';
 
 const router = Router();
 
 router.route("/")
-.get(Controller.getAll)
-.post(Controller.post)
-.delete(Controller.deleteAll);
+.get(UserController.getUsers)
+.post(multerConfig.single('photo'),UserController.postUser)
+.delete(UserController.deleteUsers);
 
-router.route("/:userID")
-.get(Controller.getByID)
-.put(Controller.put)
-.delete(Controller.deleteByID);
+router.route("/access")
+.post(UserController.allowAccess);
 
-router.route("/user/")
-.post(Controller.postByCodePassword);
+router.route("/:id")
+.get(UserController.getUser)
+.put(UserController.putUser)
+.delete(UserController.deleteUser);
 
-router.route("/name/:userName")
-.get(Controller.getByName)
-.delete(Controller.deleteByName);
+router.route("/appointments/:userid")
+.get(AppointmentController.getAppointments)
+.post(AppointmentController.postAppointment)
+.delete(AppointmentController.deleteAppointments);
+
+router.route("/appointments/:userid/:appointmentid")
+.get(AppointmentController.getAppointment)
+.put(AppointmentController.putAppointments)
+.delete(AppointmentController.deleteAppointment);
 
 export default router;
