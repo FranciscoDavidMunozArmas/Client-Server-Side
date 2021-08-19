@@ -80,7 +80,6 @@ export class AppointmentComponent implements OnInit {
   saveAppointment() {
     const userID = this.cookie.get(this.cookieName);
     if (!this.appointment) {
-      console.log(this.appointment);
       this.appointment = {
         service: this.services.find((element: Service) => element._id === this.input.servicecode) as Service,
         employee: this.employees.find((element: Employee) => element._id === this.input.employeecode) as Employee,
@@ -94,9 +93,17 @@ export class AppointmentComponent implements OnInit {
           }
         );
     } else {
-      this.appointmentService.putAppointment(userID, this.appointment._id as string, this.appointment)
+      const auxAppointment:Appointment = {
+        _id: this.appointment._id,
+        service: this.services.find((element: Service) => element._id === this.input.servicecode) as Service,
+        employee: this.employees.find((element: Employee) => element._id === this.input.employeecode) as Employee,
+        date: this.input.date
+      }
+      this.appointmentService.putAppointment(userID, this.appointment._id as string, auxAppointment)
         .subscribe(
-          () => {
+          res => {
+            console.log(res);
+            this.appointment = res.find((element: Appointment) => element._id === this.appointment._id) as Appointment;
             this.saveEvent.emit(this.appointment);
           }
         );

@@ -29,7 +29,7 @@ export class AppointmentService extends ServiceParent {
   }
 
   putAppointment(userid: string, appointmentid: string, appointment: Appointment) {
-    return this.httpClient.put(`${super.getURI()}/${userid}/${appointmentid}`, appointment);
+    return this.httpClient.put<Appointment[]>(`${super.getURI()}/${userid}/${appointmentid}`, appointment);
   }
 
   deleteAppointment(userid: string, appointmentid: string) {
