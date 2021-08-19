@@ -1,4 +1,4 @@
 export interface Employee {
-    EMPLOYEECODE: string,
-    EMPLOYEENAME: string
+    _id?: string,
+    name: string
 }

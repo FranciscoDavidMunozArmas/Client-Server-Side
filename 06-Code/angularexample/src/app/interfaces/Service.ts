@@ -1,5 +1,5 @@
 export interface Service{
-    SERVICECODE: string,
-    SERVICENAME: string,
-    SERVICEDESCRIPTION: string,
+    _id?: string,
+    name: string,
+    description: string
 }

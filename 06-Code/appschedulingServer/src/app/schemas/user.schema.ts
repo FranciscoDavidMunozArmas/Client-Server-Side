@@ -16,7 +16,8 @@ const schema = new Schema({
             service: {
                 name: String,
                 description: String
-            }
+            },
+            date: Date
         }
     ]
 },

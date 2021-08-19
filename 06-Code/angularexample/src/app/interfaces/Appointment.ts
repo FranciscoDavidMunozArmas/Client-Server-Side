@@ -1,6 +1,9 @@
+import { Service } from "../services/service";
+import { Employee } from "./Employee";
+
 export interface Appointment{
-    APPOINTMENTCODE: string,
-    SERVICECODE: string,
-    USERCODE: string,
-    APPOINTMENTDAYHOUR: Date
+    _id?: string
+    employee: Employee,
+    service: Service,
+    date: Date
 };

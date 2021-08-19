@@ -44,7 +44,6 @@ export const postUser = async (req: Request, res: Response) => {
             password: password,
             photo: req.file?.path
         };
-        console.log(password);
         const newUser = await userSchema.create(user);
         return res.status(200).json(newUser);
     } catch (error) {
@@ -64,7 +63,10 @@ export const getUser = async (req: Request, res: Response) => {
 export const putUser = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
-        const user: User = req.body;
+        const user = {
+            name: req.body.name,
+            photo: req.file?.path
+        };
         const updatedUser = await userSchema.findByIdAndUpdate(id, user, { new: true });
         return res.status(200).json(updatedUser);
     } catch (error) {
@@ -88,11 +90,15 @@ export const allowAccess = async (req: Request, res: Response) => {
     try {
         const { name, password } = req.body;
         let result: boolean = false;
+        let token: any;
         const user = await userSchema.findOne({name});
         if (user) {
             result = bcryptjs.compareSync(password, user?.password as string);
+            if(result){
+                token = user._id;
+            }
         }
-        return res.status(200).json({ allow: result });
+        return res.status(200).json({ token: token });
     } catch (error: any) {
         return res.status(500).json({ message: "error", error: error });
     }

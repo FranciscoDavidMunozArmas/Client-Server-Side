@@ -1,5 +1,9 @@
+import { Appointment } from "./Appointment";
+
 export interface User{
-    USERCODE: string,
-    USERNAME: string,
-    USERPASSWORD: string
+    _id?:string,
+    name: string,
+    password: string,
+    photo: string,
+    appointments: Appointment[]
 }
