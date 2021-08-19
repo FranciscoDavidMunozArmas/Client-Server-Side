@@ -1,5 +1,5 @@
-import { Service } from "../services/service";
 import { Employee } from "./Employee";
+import { Service } from "./Service";
 
 export interface Appointment{
     _id?: string

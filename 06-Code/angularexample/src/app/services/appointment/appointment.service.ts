@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Appointment } from 'src/app/interfaces/Appointment';
-import { Service } from '../service';
+import { ServiceParent } from '../service.parent';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AppointmentService extends Service {
+export class AppointmentService extends ServiceParent {
   constructor(private httpClient: HttpClient) {
     super();
     super.extendsURI("/users/appointments");

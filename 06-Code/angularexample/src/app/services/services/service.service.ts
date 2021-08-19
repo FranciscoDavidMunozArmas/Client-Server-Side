@@ -1,18 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Service } from '../service';
+import { ServiceParent } from '../service.parent';
+import { Service } from 'src/app/interfaces/Service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ServiceService extends Service {
+export class ServiceService extends ServiceParent {
 
   constructor(private httpClient: HttpClient) {
     super();
     super.extendsURI("/service");
   }
 
-  getAll() {
+  /*getServices() {
     return this.httpClient.get<any[]>(super.getURI());
   }
   getById(id: string) {
@@ -29,6 +30,27 @@ export class ServiceService extends Service {
   }
   putService(id: string, service: Service) {
     return this.httpClient.put(`${super.getURI()}/${id}`, service);
+  }*/
+
+  getServices () {
+    const services: Service[] = [
+      {
+        _id: "1",
+        name: "Corte",
+        description: "Lorem ipsum"
+      },
+      {
+        _id: "2",
+        name: "Lavado de cabello",
+        description: "Lorem ipsum"
+      },
+      {
+        _id: "3",
+        name: "Corte express",
+        description: "Lorem ipsum"
+      }
+    ];
+    return services;
   }
 
 }

@@ -1,4 +1,4 @@
-export class Service {
+export class ServiceParent {
     private URI: string = "http://localhost:3000";
 
     constructor(){}
