@@ -21,11 +21,10 @@ export class UserService extends ServiceParent{
     return this.httpClient.get<User>(`${super.getURI()}/${id}`);
   }
 
-  postUser(user: User, photo: File){
+  postUser(user: User){
     const fd = new FormData();
     fd.append("name", user.name);
     fd.append("password", user.password);
-    fd.append("photo", photo);
     return this.httpClient.post<User>(super.getURI(), fd);
   }
 

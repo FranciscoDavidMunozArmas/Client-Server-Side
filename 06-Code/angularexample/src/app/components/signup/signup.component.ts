@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/userservice/user.service';
+import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/interfaces/User';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -20,7 +20,9 @@ export class SignupComponent implements OnInit {
   message: string = "";
   private cookieName:string = "logged-user";
 
-  constructor(private userService: UserService, private router: Router, private cookie: CookieService) { }
+  constructor(private userService: UserService, 
+    private router: Router, 
+    private cookie: CookieService) { }
 
   ngOnInit(): void {
     const cookieValue = this.cookie.get(this.cookieName);
@@ -41,7 +43,6 @@ export class SignupComponent implements OnInit {
     this.userService.postUser(user)
     .subscribe(res => {
       const user:User = res;
-      console.log(user);
       if(!user){
         this.message = "User already exists";
       } else {

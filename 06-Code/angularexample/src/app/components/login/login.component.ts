@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/userservice/user.service';
+import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/interfaces/User';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -35,13 +35,13 @@ export class LoginComponent implements OnInit {
   logIn(e:any){
     e.preventDefault();
     this.message = "";
-    this.userService.postByCodePassword(this.user.usercode, this.user.userpassword)
+    this.userService.allowAccess(this.user)
     .subscribe(res => {
-      const user:User = res[0];
-      if(!user){
+      const access: any = res;
+      if(!access){
         this.message = "User not found";
       } else {
-        this.letUserIn(user.USERCODE);
+        this.letUserIn(access as string);
       }
     });
   }

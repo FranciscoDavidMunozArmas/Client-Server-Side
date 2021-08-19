@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, OnChanges, Output } from '@angular/core';
-import { AppointmentService } from 'src/app/services/appointmentservice/appointment.service';
 
 @Component({
   selector: 'app-delete-appointment',
