@@ -50,6 +50,7 @@ export class EmployeeService extends ServiceParent {
         _id: "4",
         name: "Loreto"
       }
-    ]
+    ];
+    return employees;
   }
 }

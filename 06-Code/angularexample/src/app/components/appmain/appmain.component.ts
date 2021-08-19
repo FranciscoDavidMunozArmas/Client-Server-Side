@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { AppointmentService } from 'src/app/services/appointmentservice/appointment.service';
-import { UserService } from 'src/app/services/userservice/user.service';
+import { AppointmentService } from 'src/app/services/appointment/appointment.service';
+import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/interfaces/User';
 import { Appointment } from 'src/app/interfaces/Appointment';
 
@@ -35,26 +35,15 @@ export class AppmainComponent implements OnInit {
       this.router.navigate(['/login']);
     }
 
-    this.setAppointments(cookieValue);
     this.setUser(cookieValue);
 
   }
 
   setUser(id: string) {
-    this.userService.getById(id)
+    this.userService.getUser(id)
       .subscribe(
         res => {
-          this.user = res[0];
-        }
-      );
-  }
-
-  setAppointments(id: string) {
-    this.appointmentService.getAllByUser(id)
-      .subscribe(
-        res => {
-          this.appointments = res;
-          this.setAppointmentDays();
+          this.user = res;
         }
       );
   }
@@ -70,13 +59,13 @@ export class AppmainComponent implements OnInit {
   }
 
   removeAppointment(id: string) {
-    this.appointments = this.appointments.filter((element: Appointment) => element.APPOINTMENTCODE !== id);
+    this.appointments = this.appointments.filter((element: Appointment) => element._id !== id);
     this.setAppointmentDays();
   }
 
   editAppointment(appointment: Appointment) {
     this.appointments = this.appointments.filter((element: Appointment) => {
-      if (element.APPOINTMENTCODE === appointment.APPOINTMENTCODE) {
+      if (element._id === appointment._id) {
         element = appointment;
       }
       return element;

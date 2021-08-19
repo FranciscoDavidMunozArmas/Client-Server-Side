@@ -12,27 +12,27 @@ export class AppointmentService extends ServiceParent {
     super.extendsURI("/users/appointments");
   }
 
-  getAll(userid: string) {
+  getAppointments(userid: string) {
     return this.httpClient.get(`${super.getURI()}/${userid}`);
   }
 
-  post(userid: string, appointment: Appointment) {
+  postAppointment(userid: string, appointment: Appointment) {
     return this.httpClient.post(`${super.getURI()}/${userid}`, appointment);
   }
 
-  deleteAll(userid: string) {
+  deleteAppointments(userid: string) {
     return this.httpClient.delete(`${super.getURI()}/${userid}`);
   }
 
-  getByID(userid: string, appointmentid: string) {
+  getAppointment(userid: string, appointmentid: string) {
     return this.httpClient.get(`${super.getURI()}/${userid}/${appointmentid}`);
   }
 
-  put(userid: string, appointmentid: string, appointment: Appointment) {
+  putAppointment(userid: string, appointmentid: string, appointment: Appointment) {
     return this.httpClient.put(`${super.getURI()}/${userid}/${appointmentid}`, appointment);
   }
 
-  deleteByID(userid: string, appointmentid: string) {
+  deleteAppointment(userid: string, appointmentid: string) {
     return this.httpClient.delete(`${super.getURI()}/${userid}/${appointmentid}`);
   }
 }

@@ -1,12 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Appointment } from 'src/app/interfaces/Appointment';
 import { Employee } from 'src/app/interfaces/Employee';
-import { AppointmentService } from 'src/app/services/appointmentservice/appointment.service';
-import { EmployeeService } from 'src/app/services/employeeservice/employee.service';
+import { AppointmentService } from 'src/app/services/appointment/appointment.service';
+import { EmployeeService } from 'src/app/services/employee/employee.service';
 import { Service } from 'src/app/interfaces/Service';
-import { ServiceService } from 'src/app/services/serviceservice/service.service';
-import { v4 } from "uuid";
-import * as moment from "moment";
+import { ServiceService } from 'src/app/services/services/service.service';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -20,8 +18,8 @@ export class AppointmentComponent implements OnInit {
   @Output() closeEvent = new EventEmitter<any>();
   @Output() saveEvent = new EventEmitter<any>();
 
-  services: Service[];
-  employees: Employee[];
+  services: Service[] = [];
+  employees: Employee[] = [];
   input: any = {
     date: new Date(),
     servicecode: ""
@@ -42,27 +40,29 @@ export class AppointmentComponent implements OnInit {
 
   setInput() {
     if (this.appointment) {
-      this.input.servicecode = this.appointment.SERVICECODE;
-      this.input.date = new Date(this.appointment.APPOINTMENTDAYHOUR);
+      this.input.servicecode = this.appointment._id;
+      this.input.date = new Date(this.appointment.date);
     }
   }
 
   setServices() {
-    this.serviceService.getAll()
+    /*this.serviceService.getServices()
       .subscribe(
         res => {
           this.services = res;
         }
-      );
+      );*/
+    this.services = this.serviceService.getServices();
   }
 
   setEmployees() {
-    this.employeeService.getAll()
+    /*this.employeeService.getEmployees()
       .subscribe(
         res => {
           this.employees = res;
         }
-      );
+      );*/
+    this.employees = this.employeeService.getEmployees();
   }
 
   onChange(e: any) {
@@ -77,25 +77,16 @@ export class AppointmentComponent implements OnInit {
   }
 
   saveAppointment() {
+    const userID = this.cookie.get(this.cookieName);
     if (!this.appointment) {
-      const userID = this.cookie.get(this.cookieName);
-      this.appointment = {
-        APPOINTMENTCODE: v4(),
-        SERVICECODE: this.input.servicecode,
-        USERCODE: userID,
-        APPOINTMENTDAYHOUR: this.input.date
-      }
-      console.log(this.appointment);
-      this.appointmentService.post(this.appointment)
+      this.appointmentService.postAppointment(userID, this.appointment)
         .subscribe(
           () => {
             this.saveEvent.emit(this.appointment);
           }
         );
     } else {
-      this.appointment = { ... this.appointment, SERVICECODE: this.input.servicecode }
-      this.appointment = { ... this.appointment, APPOINTMENTDAYHOUR: this.input.date }
-      this.appointmentService.put(this.appointment.APPOINTMENTCODE, this.appointment)
+      this.appointmentService.putAppointment(userID, this.appointment._id as string, this.appointment)
         .subscribe(
           () => {
             this.saveEvent.emit(this.appointment);
