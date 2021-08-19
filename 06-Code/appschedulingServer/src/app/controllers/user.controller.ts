@@ -90,12 +90,13 @@ export const allowAccess = async (req: Request, res: Response) => {
     try {
         const { name, password } = req.body;
         let result: boolean = false;
-        let token: any;
+        let token: string = "";
         const user = await userSchema.findOne({name});
         if (user) {
             result = bcryptjs.compareSync(password, user?.password as string);
             if(result){
-                token = user._id;
+                console.log(password);
+                token = user._id as string;
             }
         }
         return res.status(200).json({ token: token });

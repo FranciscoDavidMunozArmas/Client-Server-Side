@@ -39,23 +39,12 @@ export class SignupComponent implements OnInit {
     e.preventDefault();
     this.message = "";
     const user: User = this.user;
-    console.log(user);
     this.userService.postUser(user)
     .subscribe(res => {
       const user:User = res;
       if(!user){
         this.message = "User already exists";
-      } else {
-        this.letUserIn(this.user.usercode);
       }
     });
   }
-
-  letUserIn(id:string){
-    let date = new Date();
-    date.setHours(date.getHours() + 2);
-    this.cookie.set(this.cookieName, id, date);
-    this.router.navigate(['/calendar']);
-  }
-
 }

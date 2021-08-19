@@ -45,6 +45,6 @@ export class UserService extends ServiceParent{
   }
 
   allowAccess(user: User){
-    return this.httpClient.post(`${super.getURI()}/access`, user);
+    return this.httpClient.post<string>(`${super.getURI()}/access`, user);
   }
 }

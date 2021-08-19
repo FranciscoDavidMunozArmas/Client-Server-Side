@@ -34,9 +34,7 @@ export class AppmainComponent implements OnInit {
     if (!cookieValue) {
       this.router.navigate(['/login']);
     }
-
     this.setUser(cookieValue);
-
   }
 
   setUser(id: string) {
@@ -44,6 +42,8 @@ export class AppmainComponent implements OnInit {
       .subscribe(
         res => {
           this.user = res;
+          this.appointments = this.user.appointments;
+          this.setAppointmentDays();
         }
       );
   }

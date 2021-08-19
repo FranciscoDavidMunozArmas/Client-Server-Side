@@ -11,10 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class LoginComponent implements OnInit {
   
-  user: any = {
-    usercode: "",
-    userpassword: ""
-  }
+  user: User;
 
   message: string = "";
   private cookieName:string = "logged-user";
@@ -41,15 +38,15 @@ export class LoginComponent implements OnInit {
       if(!access){
         this.message = "User not found";
       } else {
-        this.letUserIn(access as string);
+        this.letUserIn(access.token);
       }
     });
   }
 
-  letUserIn(id:string){
+  letUserIn(token:string){
     let date = new Date();
     date.setHours(date.getHours() + 2);
-    this.cookie.set(this.cookieName, id, date);
+    this.cookie.set(this.cookieName, token, date);
     this.router.navigate(['/calendar']);
   }
 

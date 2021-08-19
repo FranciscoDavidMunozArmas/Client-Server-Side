@@ -11,13 +11,13 @@
                 <label for="disabledSelect" class="form-label">Service</label>
                 <select id="disabledSelect" [value]="input.servicecode" name="servicecode" (change)="onChange($event)" class="form-control form-select" required>
                     <option value=""> -- Select an option -- </option>
-                    <option *ngFor="let service of services" [value]="service.SERVICECODE" [selected]="input.servicecode === service.SERVICECODE">{{service.SERVICENAME}}</option>
+                    <option *ngFor="let service of services" [value]="service._id" [selected]="input.servicecode === service._id">{{service.name}}</option>
                 </select>
             </div>
             <div class="form-group row">
                 <label for="disabledSelectEmployeeName" class="form-label">Attendant</label>
                 <select id="disabledSelectEmployeeName" class="form-control form-select">
-                    <option *ngFor="let employee of employees">{{employee.EMPLOYEENAME}}</option>
+                    <option *ngFor="let employee of employees">{{employee.name}}</option>
             </select>
             </div>
             <div class="form-group row">
