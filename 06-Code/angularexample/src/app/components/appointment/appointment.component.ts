@@ -22,7 +22,8 @@ export class AppointmentComponent implements OnInit {
   employees: Employee[] = [];
   input: any = {
     date: new Date(),
-    servicecode: ""
+    servicecode: "",
+    employeecode: "",
   };
 
   private cookieName: string = "logged-user";
@@ -79,6 +80,13 @@ export class AppointmentComponent implements OnInit {
   saveAppointment() {
     const userID = this.cookie.get(this.cookieName);
     if (!this.appointment) {
+      console.log(this.appointment);
+      this.appointment = {
+        service: this.services.find((element: Service) => element._id === this.input.servicecode) as Service,
+        employee: this.employees.find((element: Employee) => element._id === this.input.employeecode) as Employee,
+        date: this.input.date
+      }
+      console.log(this.appointment);
       this.appointmentService.postAppointment(userID, this.appointment)
         .subscribe(
           () => {

@@ -39,11 +39,12 @@ export const postUser = async (req: Request, res: Response) => {
     try {
         let { password } = req.body;
         password = bcryptjs.hashSync(password, bcryptjs.genSaltSync(saltRounds));
-        let user = {
+        const user = {
             name: req.body.name,
             password: password,
             photo: req.file?.path
         };
+        console.log(user);
         const newUser = await userSchema.create(user);
         return res.status(200).json(newUser);
     } catch (error) {

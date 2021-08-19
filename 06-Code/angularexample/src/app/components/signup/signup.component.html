@@ -13,10 +13,10 @@
                     <input type="text" name="usercode" (change)="onChange($event)" [value]="user.usercode" class="form-control fadeIn second" placeholder="User CI" #username required>
                 </div> -->
                 <div class="form-group">
-                    <input type="text" id="login" class="form-control fadeIn second" (change)="onChange($event)" [value]="user.username" name="username" placeholder="User name" required>
+                    <input type="text" id="login" class="form-control fadeIn second" (change)="onChange($event)" [value]="user.name" name="name" placeholder="Username" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" id="password" class="form-control fadeIn third" (change)="onChange($event)" [value]="user.userpassword" name="userpassword" placeholder="Password" required>
+                    <input type="password" id="password" class="form-control fadeIn third" (change)="onChange($event)" [value]="user.password" name="password" placeholder="Password" required>
                 </div>
                 <div class="form-group">
                     <input type="password" id="password" class="form-control fadeIn fourth" name="confirmpassword" placeholder="Confirm password" required>

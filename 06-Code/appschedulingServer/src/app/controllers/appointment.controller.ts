@@ -26,7 +26,6 @@ export const postAppointment = async (req: Request, res: Response) => {
     try {
         const { userid } = req.params;
         const appointment: Appointment = req.body;
-        console.log(appointment);
         const updateUser = await userSchema.findByIdAndUpdate(userid, {
             $push: {
                 appointments: [appointment]

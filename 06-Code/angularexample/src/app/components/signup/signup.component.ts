@@ -12,9 +12,8 @@ import { CookieService } from 'ngx-cookie-service';
 export class SignupComponent implements OnInit {
 
   user: any = {
-    usercode: "",
-    username: "",
-    userpassword: ""
+    name: "",
+    password: "",
   }
 
   message: string = "";
@@ -44,6 +43,8 @@ export class SignupComponent implements OnInit {
       const user:User = res;
       if(!user){
         this.message = "User already exists";
+      } else {
+        this.router.navigate(['/login']);
       }
     });
   }

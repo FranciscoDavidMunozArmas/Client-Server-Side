@@ -16,8 +16,9 @@
             </div>
             <div class="form-group row">
                 <label for="disabledSelectEmployeeName" class="form-label">Attendant</label>
-                <select id="disabledSelectEmployeeName" class="form-control form-select">
-                    <option *ngFor="let employee of employees">{{employee.name}}</option>
+                <select id="disabledSelectEmployeeName" [value]="input.employeecode" name="employeecode" (change)="onChange($event)" class="form-control form-select" required>
+                    <option value=""> -- Select an option -- </option>
+                    <option *ngFor="let employee of employees" [value]="employee._id" [selected]="input.employeecode === employee._id">{{employee.name}}</option>
             </select>
             </div>
             <div class="form-group row">
