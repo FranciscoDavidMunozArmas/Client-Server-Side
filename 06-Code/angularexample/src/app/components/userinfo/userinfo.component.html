@@ -5,7 +5,15 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md">
-                <img class="photo" src="https://i0.wp.com/www.labicok.com/wp-content/uploads/2020/06/default-user-image.png?ssl=1" alt="">
+                <form action="">
+                    <div class="photo-container">
+                        <input type="file" name="photo" (change)="onChange(inputphoto)" hidden #inputphoto>
+                        <img class="photo" [src]="photoselected || 'https://i0.wp.com/www.labicok.com/wp-content/uploads/2020/06/default-user-image.png?ssl=1'" alt="" (error)="onImageError($event)">
+                        <div class="profile-tag-hidden profile-tag" (click)="inputphoto.click()">
+                            <span>Profile Photo</span>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="col-md">
                 <h5>User</h5>

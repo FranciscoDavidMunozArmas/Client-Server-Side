@@ -68,6 +68,11 @@ export const putUser = async (req: Request, res: Response) => {
             name: req.body.name,
             photo: req.file?.path
         };
+        const oldUser = await userSchema.findById(id);
+        const photoexists: boolean = fs.existsSync(path.resolve(oldUser?.photo as string));
+        if(photoexists) {
+            await fs.unlink(path.resolve(oldUser?.photo as string));
+        }
         const updatedUser = await userSchema.findByIdAndUpdate(id, user, { new: true });
         return res.status(200).json(updatedUser);
     } catch (error) {

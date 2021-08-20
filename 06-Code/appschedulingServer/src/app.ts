@@ -2,6 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import config from './config/config';
+import path from 'path';
 
 import userRoutes from './app/routes/user.routes';
 
@@ -18,5 +19,8 @@ app.use(express.json());
 
 //routes
 app.use("/users", userRoutes);
+
+//static
+app.use('/uploads', express.static(path.resolve('uploads')));
 
 export default app;

@@ -27,7 +27,7 @@
     </ng-template>
 
     <ng-template #userModal let-modal>
-        <app-userinfo [user]="user" (closeEvent)="modalClose()"></app-userinfo>
+        <app-userinfo [user]="user" (closeEvent)="modalClose()" (setUser)="setUser($event)"></app-userinfo>
     </ng-template>
 </div>
 
