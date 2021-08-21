@@ -8,6 +8,7 @@ const schema = new Schema ({
 {
     timestamps: false,
     versionKey: false,
+    collection: "service"
 });
 
-export default model<Service>("employee", schema);
+export default model<Service>("service", schema);

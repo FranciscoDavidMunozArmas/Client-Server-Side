@@ -24,6 +24,7 @@ const schema = new Schema({
     {
         timestamps: false,
         versionKey: false,
+        collection: "users"
     });
 
 export default model<User>("user", schema);

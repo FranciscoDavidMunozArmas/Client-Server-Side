@@ -68,7 +68,6 @@ export class AppointmentComponent implements OnInit {
 
   onChange(e: any) {
     this.input = { ... this.input, [e.target.name]: e.target.value };
-    console.log(this.input);
   }
 
   submitForm(e: any) {
@@ -85,7 +84,6 @@ export class AppointmentComponent implements OnInit {
         employee: this.employees.find((element: Employee) => element._id === this.input.employeecode) as Employee,
         date: this.input.date
       }
-      console.log(this.appointment);
       this.appointmentService.postAppointment(userID, this.appointment)
         .subscribe(
           () => {
@@ -102,7 +100,6 @@ export class AppointmentComponent implements OnInit {
       this.appointmentService.putAppointment(userID, this.appointment._id as string, auxAppointment)
         .subscribe(
           res => {
-            console.log(res);
             this.appointment = res.find((element: Appointment) => element._id === this.appointment._id) as Appointment;
             this.saveEvent.emit(this.appointment);
           }

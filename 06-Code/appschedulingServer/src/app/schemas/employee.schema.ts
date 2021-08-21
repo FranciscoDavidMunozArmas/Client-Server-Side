@@ -7,6 +7,7 @@ const schema = new Schema ({
 {
     timestamps: false,
     versionKey: false,
+    collection: "employee"
 });
 
 export default model<Employee>("employee", schema);

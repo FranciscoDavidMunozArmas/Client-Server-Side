@@ -53,8 +53,7 @@ export class AppmainComponent implements OnInit {
   }
 
   setAppointmentDays() {
-    this.appointmentDays = this.appointments.map((element: any) => new Date(element.APPOINTMENTDAYHOUR));
-    this.calendar.nativeElement.refresh();
+    this.appointmentDays = this.appointments.map((element: Appointment) => new Date(element.date));
   }
 
   addAppointment(appointment: Appointment) {
