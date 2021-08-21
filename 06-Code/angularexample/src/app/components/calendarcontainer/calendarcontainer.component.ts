@@ -15,7 +15,7 @@ export class CalendarcontainerComponent implements OnInit {
 
   }
 
-  sendParent(date: Date) {
+  sendDate(date: Date) {
     this.dateEvent.emit(date);
   }
 
