@@ -86,7 +86,9 @@ export class AppointmentComponent implements OnInit {
       }
       this.appointmentService.postAppointment(userID, this.appointment)
         .subscribe(
-          () => {
+          (res: any) => {
+            this.appointment = res.appointments[res.appointments.length - 1];
+            console.log(this.appointment);
             this.saveEvent.emit(this.appointment);
           }
         );

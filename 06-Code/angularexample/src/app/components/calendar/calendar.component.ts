@@ -84,12 +84,15 @@ export class CalendarComponent implements OnInit {
     } else {
       let date = new Date();
       this.getDaysFromDate(date.getMonth() + 1, date.getFullYear());
+      this.dateOutput.emit(date);
     }
   }
 
   clickDay(day: any) {
     const parse = this.dateSelect.format('YYYY/MM/DD');
-    this.dateOutput.emit(new Date(parse));
+    const date = new Date(parse);
+    date.setDate(day.value);
+    this.dateOutput.emit(date);
   }
 
 }

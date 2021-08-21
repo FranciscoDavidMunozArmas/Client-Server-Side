@@ -6,6 +6,7 @@ import { AppointmentService } from 'src/app/services/appointment/appointment.ser
 import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/interfaces/User';
 import { Appointment } from 'src/app/interfaces/Appointment';
+import { faTeeth } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -20,6 +21,8 @@ export class AppmainComponent implements OnInit {
   appointmentDays: Date[];
   appointments: Appointment[];
   user: User;
+  showmore: boolean = true;
+  todayAppointment: Appointment[];
 
   @ViewChild("createModal") createModal: ElementRef;
   @ViewChild("userModal") userModal: ElementRef;
@@ -44,6 +47,7 @@ export class AppmainComponent implements OnInit {
           this.user = res;
           this.appointments = this.user.appointments;
           this.setAppointmentDays();
+          this.setTodayAppointment(new Date());
         }
       );
   }
@@ -74,6 +78,22 @@ export class AppmainComponent implements OnInit {
       return element;
     });
     this.setAppointmentDays();
+  }
+
+  setTodayAppointment(date: Date) {
+    this.todayAppointment = [];
+    this.appointments.forEach((element: Appointment) => {
+      const elementDate = new Date(element.date);
+      if (elementDate.getDate() === date.getDate() && 
+      elementDate.getMonth() === date.getMonth() &&
+      elementDate.getFullYear() === date.getFullYear()) {
+        this.todayAppointment.push(element);
+      }
+    });
+  }
+
+  showMore(){
+    this.showmore = !this.showmore;
   }
 
   clickAdd() {

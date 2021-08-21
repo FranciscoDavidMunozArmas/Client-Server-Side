@@ -2,16 +2,28 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-9" *ngIf="appointmentDays; else lazyloading">
-                <app-calendarcontainer [appointments]="appointmentDays" #calendar></app-calendarcontainer>
+                <app-calendarcontainer [appointments]="appointmentDays" (dateEvent)="setTodayAppointment($event)" #calendar></app-calendarcontainer>
             </div>
             <div class="col-sm fadeIn first">
                 <div class="container">
                     <app-clock></app-clock>
                 </div>
+                <a *ngIf="!showmore; else showless" type="button" (click)="showMore()" style="color: var(--primary-color);"><span class="fa fa-plus"></span> More</a>
+                <ng-template #showless>
+                    <a type="button" style="color: var(--primary-color);" (click)="showMore()"><span class="fa fa-minus"></span> Less</a>
+                </ng-template>
+
                 <div *ngIf="appointments; else lazyloading">
-                    <div *ngFor="let appointment of appointments">
-                        <app-buttons-appointment (deleteEvent)="removeAppointment($event)" (editEvent)="editAppointment($event)" [appointment]="appointment"></app-buttons-appointment>
+                    <div *ngIf="showmore; else dateAppointment">
+                        <div *ngFor="let appointment of appointments">
+                            <app-buttons-appointment (deleteEvent)="removeAppointment($event)" (editEvent)="editAppointment($event)" [appointment]="appointment"></app-buttons-appointment>
+                        </div>
                     </div>
+                    <ng-template #dateAppointment>
+                        <div *ngFor="let appointment of todayAppointment">
+                            <app-buttons-appointment (deleteEvent)="removeAppointment($event)" (editEvent)="editAppointment($event)" [appointment]="appointment"></app-buttons-appointment>
+                        </div>
+                    </ng-template>
                 </div>
             </div>
         </div>
