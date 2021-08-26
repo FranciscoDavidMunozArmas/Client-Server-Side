@@ -7,9 +7,9 @@ export const putService = async (req: Request, res: Response) =>{}
 
 export const postService = async (req: Request, res: Response) => {
     try {
-        const { userService } = req.params;
+        const { serviceID } = req.params;
         const service: Service = req.body;
-        const updateService = await userSchema.findByIdAndUpdate(userService, {
+        const updateService = await userSchema.findByIdAndUpdate(serviceID, {
             $push: {
                 services: [service]
             }
