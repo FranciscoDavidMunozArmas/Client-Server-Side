@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import { Employee } from "../interfaces/employee";
+import employeeSchema from "../schemas/employee.schema";
+import serviceSchema from "../schemas/service.schema";
 import userSchema from "../schemas/user.schema";
 
 export const putEmployee = async (req: Request, res: Response) => {
@@ -20,7 +22,7 @@ export const postEmployee = async (req: Request, res: Response) => {
     try {
         const { employeeID } = req.params;
         const employee: Employee = req.body;
-        const updateEmployee = await userSchema.findByIdAndUpdate(employeeID, {
+        const updateEmployee = await employeeSchema.findByIdAndUpdate(employeeID, {
             $push: {
                 employees: [employee]
             }
