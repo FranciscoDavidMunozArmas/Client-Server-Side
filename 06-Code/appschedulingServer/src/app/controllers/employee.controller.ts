@@ -18,9 +18,9 @@ export const putEmployee = async (req: Request, res: Response) => {
 
 export const postEmployee = async (req: Request, res: Response) => {
     try {
-        const { userName } = req.params;
+        const { employeeID } = req.params;
         const employee: Employee = req.body;
-        const updateEmployee = await userSchema.findByIdAndUpdate(userName, {
+        const updateEmployee = await userSchema.findByIdAndUpdate(employeeID, {
             $push: {
                 employees: [employee]
             }
