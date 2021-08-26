@@ -15,3 +15,18 @@ export const putEmployee = async (req: Request, res: Response) => {
         });
     }
 }
+
+export const postEmployee = async (req: Request, res: Response) => {
+    try {
+        const { userName } = req.params;
+        const employee: Employee = req.body;
+        const updateEmployee = await userSchema.findByIdAndUpdate(userName, {
+            $push: {
+                employees: [employee]
+            }
+        }, { new: true });
+        return res.status(200).json(updateEmployee);
+    } catch (error: any) {
+        return res.status(500).json({ message: "error", error: error });
+    }
+}
