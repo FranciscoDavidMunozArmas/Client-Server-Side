@@ -3,7 +3,19 @@ import { Service } from "../interfaces/service";
 import serviceSchema from "../schemas/service.schema";
 import userSchema from "../schemas/user.schema";
 
-export const putService = async (req: Request, res: Response) =>{}
+export const putService = async (req: Request, res: Response) =>{
+    try {
+        const {serviceID} = req.params;
+        const service: Service = req.body;
+        const putService = await serviceSchema.findByIdAndUpdate(serviceID,service,{new:true});
+        return res.status(200).json(putService);     
+    }catch(error: any) {
+        return res.status(500).json({
+            message: "Error",
+            error: error.message
+        });
+    }
+}
 
 
 export const postService = async (req: Request, res: Response) => {
