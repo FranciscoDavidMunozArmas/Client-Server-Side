@@ -3,8 +3,14 @@ import { Service } from "../interfaces/service";
 import serviceSchema from "../schemas/service.schema";
 import userSchema from "../schemas/user.schema";
 
-export const getService = async (req: Request) =>{
-    
+export const getService = async (req: Request, res: Response) =>{
+    try{
+        const { serviceID } = req.params;
+        const user = await userSchema.findById(serviceID);
+        return res.status(200).json(serviceID);
+    } catch(error: any){
+        return res.status(500).json({ message: "error", error: error });
+    }
 }
 
 export const putService = async (req: Request, res: Response) =>{
