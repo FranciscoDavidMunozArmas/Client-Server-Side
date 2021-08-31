@@ -4,6 +4,10 @@ import employeeSchema from "../schemas/employee.schema";
 import serviceSchema from "../schemas/service.schema";
 import userSchema from "../schemas/user.schema";
 
+export const getEmployee = async (req: Request, res: Response) =>{
+    
+}
+
 export const putEmployee = async (req: Request, res: Response) => {
     try{
         const {userName} = req.params;
