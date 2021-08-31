@@ -9,6 +9,8 @@ export const getEmployee = async (req: Request, res: Response) =>{
         const { employeeID } = req.params;
         const user = await userSchema.findById(employeeID);
         return res.status(200).json(employeeID);
+    }catch (error: any){
+        return res.status(500).json({message: "error", error: error});
     }
 }
 
