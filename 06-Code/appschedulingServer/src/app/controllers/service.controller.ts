@@ -3,6 +3,10 @@ import { Service } from "../interfaces/service";
 import serviceSchema from "../schemas/service.schema";
 import userSchema from "../schemas/user.schema";
 
+export const getService = async (req: Request) =>{
+    
+}
+
 export const putService = async (req: Request, res: Response) =>{
     try {
         const {serviceID} = req.params;
