@@ -8,6 +8,7 @@ export const getEmployee = async (req: Request, res: Response) =>{
     try{
         const { employeeID } = req.params;
         const user = await userSchema.findById(employeeID);
+        return res.status(200).json(employeeID);
     }
 }
 
