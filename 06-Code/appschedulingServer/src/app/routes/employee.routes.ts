@@ -1,11 +1,11 @@
 import {Router} from 'express';
-import * as employeeCotroller from '../controllers/employee.controller'
+import * as employeeController from '../controllers/employee.controller'
 const router = Router();
 
 router.route("/employee/:id")
-    .get(employeeCotroller.getEmployee)
-    .post(employeeCotroller.putEmployee)
-    .put(employeeCotroller.putEmployee);
+    .get(employeeController.getEmployee)
+    .post(employeeController.putEmployee)
+    .put(employeeController.putEmployee);
 
 
 //get
