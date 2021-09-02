@@ -1,12 +1,12 @@
 import {Router} from 'express';
-import * as serviceCotroller from '../controllers/service.controller'
+import * as serviceController from '../controllers/service.controller'
 
 const router = Router();
 
 router.route("/service/:idService")
-    .get(serviceCotroller.getService)
-    .post(serviceCotroller.postService)
-    .put(serviceCotroller.putService);
+    .get(serviceController.getService)
+    .post(serviceController.postService)
+    .put(serviceController.putService);
 
 
 
