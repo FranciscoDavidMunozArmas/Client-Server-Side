@@ -10,7 +10,7 @@ export class ServiceService extends ServiceParent {
 
   constructor(private httpClient: HttpClient) {
     super();
-    super.extendsURI("/service");
+    super.extendsURI("/services");
   }
 
   /*getServices() {
@@ -33,24 +33,7 @@ export class ServiceService extends ServiceParent {
   }*/
 
   getServices () {
-    const services: Service[] = [
-      {
-        _id: "1",
-        name: "Corte",
-        description: "Lorem ipsum"
-      },
-      {
-        _id: "2",
-        name: "Lavado de cabello",
-        description: "Lorem ipsum"
-      },
-      {
-        _id: "3",
-        name: "Corte express",
-        description: "Lorem ipsum"
-      }
-    ];
-    return services;
+    return this.httpClient.get<Service[]>(super.getURI());
   }
 
 }

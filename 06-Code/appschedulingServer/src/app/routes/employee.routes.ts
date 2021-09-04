@@ -4,7 +4,7 @@ const router = Router();
 
 router.route("/")
 .get(employeeController.getEmployees)
-.post(employeeController.putEmployee)
+.post(employeeController.postEmployee)
 .delete(employeeController.deleteEmployees)
 
 

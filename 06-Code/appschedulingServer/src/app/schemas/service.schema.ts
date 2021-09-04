@@ -7,8 +7,7 @@ const schema = new Schema ({
 },
 {
     timestamps: false,
-    versionKey: false,
-    collection: "service"
+    versionKey: false
 });
 
 export default model<Service>("service", schema);

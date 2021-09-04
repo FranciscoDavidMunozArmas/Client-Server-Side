@@ -53,7 +53,11 @@ export class AppointmentComponent implements OnInit {
           this.services = res;
         }
       );*/
-    this.services = this.serviceService.getServices();
+    this.serviceService.getServices()
+    .subscribe(res => {
+       this.services = res;
+       console.log(this.services);
+    });
   }
 
   setEmployees() {
