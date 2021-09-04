@@ -29,7 +29,6 @@ export class ButtonsAppointmentComponent implements OnInit {
   ngOnInit(): void {
     this.service = this.appointment.service;
     this.setDate();
-    
   }
 
   setDate(){
