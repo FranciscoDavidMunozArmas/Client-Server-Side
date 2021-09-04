@@ -56,7 +56,6 @@ export class AppointmentComponent implements OnInit {
     this.serviceService.getServices()
     .subscribe(res => {
        this.services = res;
-       console.log(this.services);
     });
   }
 
@@ -67,7 +66,10 @@ export class AppointmentComponent implements OnInit {
           this.employees = res;
         }
       );*/
-    this.employees = this.employeeService.getEmployees();
+     this.employeeService.getEmployees()
+     .subscribe(res => {
+        this.employees = res
+     });
   }
 
   onChange(e: any) {
