@@ -19,8 +19,8 @@ app.use(express.json());
 
 //routes
 app.use("/users", userRoutes);
-app.use("/employee", userRoutes);
-app.use("/service", userRoutes);
+app.use("/employees", userRoutes);
+app.use("/services", userRoutes);
 
 //static
 app.use('/uploads', express.static(path.resolve('uploads')));

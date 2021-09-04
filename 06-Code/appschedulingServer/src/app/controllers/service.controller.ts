@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { Service } from "../interfaces/service";
 import serviceSchema from "../schemas/service.schema";
-import userSchema from "../schemas/user.schema";
 
 export const getServices = async (req: Request, res: Response) => {
     try {
@@ -33,8 +32,8 @@ export const deleteServices = async (req: Request, res: Response) => {
 
 export const getService = async (req: Request, res: Response) => {
     try {
-        const { serviceID } = req.params;
-        const service = await serviceSchema.findById(serviceID);
+        const { id } = req.params;
+        const service = await serviceSchema.findById(id);
         return res.status(200).json(service);
     } catch (error: any) {
         return res.status(500).json({ message: "error", error: error });
@@ -43,9 +42,9 @@ export const getService = async (req: Request, res: Response) => {
 
 export const putService = async (req: Request, res: Response) => {
     try {
-        const { serviceID } = req.params;
+        const { id } = req.params;
         const item: Service = req.body;
-        const service = await serviceSchema.findByIdAndUpdate(serviceID, item, { new: true });
+        const service = await serviceSchema.findByIdAndUpdate(id, item, { new: true });
         return res.status(200).json(service);
     } catch (error: any) {
         return res.status(500).json({
@@ -57,8 +56,8 @@ export const putService = async (req: Request, res: Response) => {
 
 export const deleteService = async (req: Request, res: Response) => {
     try {
-        const { serviceID } = req.params;
-        const service = await serviceSchema.findByIdAndRemove(serviceID);
+        const { id } = req.params;
+        const service = await serviceSchema.findByIdAndRemove(id);
         return res.status(200).json(service);
     } catch (error: any) {
         return res.status(500).json({ message: "error", error: error });
